@@ -5,9 +5,11 @@ import react from "@astrojs/react";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import relativeLinks from "astro-relative-links";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [react(), relativeLinks()],
 
   vite: {
     plugins: [tailwindcss()],

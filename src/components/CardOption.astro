@@ -1,0 +1,46 @@
+---
+import "@/styles/global.css";
+
+const { id, name, desc } = Astro.props;
+---
+
+<!-- paper ticket cards -->
+
+<style>
+    .paper-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        text-align: center;
+        color: #fff;
+        user-select: none;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .paper-card h1 {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .paper-card p {
+        font-size: 1rem;
+        color: #d1d5db;
+    }
+
+    .paper-card:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+<div id={id} class="paper-card animation-card w-64">
+    <img src={`/img/cards/${id}.png`} alt="" class="w-full h-auto" />
+    <h1>{name}</h1>
+    <p>{desc}</p>
+</div>

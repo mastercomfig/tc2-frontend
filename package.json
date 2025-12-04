@@ -15,6 +15,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "astro": "^5.14.4",
+    "astro-relative-links": "^0.4.2",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.1.1",
     "lightningcss": "^1.30.2",

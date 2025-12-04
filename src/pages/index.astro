@@ -1,16 +1,181 @@
 ---
-
+import CardOption from "@/components/CardOption.astro";
+import Cards from "@/components/Cards.astro";
+import "@/styles/global.css";
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<style>
+			.main-menu-bg {
+				background: rgb(0 0 0 / 10%);
+			}
+			.scroll {
+				scrollbar-color: #b4b4b4 transparent;
+			}
+			#menu-logo {
+				filter: hue-rotate(222deg) drop-shadow(0 0 0.75rem rgba(182, 127, 72, 0.5));
+			}
+			.menu-option {
+				/* transition color, background and scale */
+				transition: color 0.2s ease-in-out, background 0.15s ease-in-out,
+					transform 0.15s ease-in-out;
+				padding: 0.5rem 1rem;
+				border-radius: 0.375rem;
+				cursor: pointer;
+				color: #b4b4b4;
+				user-select: none;
+				transform: scale(1);
+				transform-origin: left;
+				display: inline-block;
+			}
+			.menu-hidden {
+				display: none;
+			}
+			.menu-option:hover {
+				color: rgb(255 153 51);
+				/* gradient */
+				background: linear-gradient(
+					90deg,
+					rgba(255, 153, 51, 0.2) 0%,
+					rgba(255, 153, 51, 0.1) 100%
+				);
+				transform: scale(1.1);
+			}
+			.card-modal {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background: rgba(0, 0, 0, 0.8);
+				padding: 2rem;
+				border-radius: 1rem;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				display: none; /* hidden by default */
+				z-index: 10;
+			}
+			#modal-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				display: none; /* hidden by default */
+				z-index: 5;
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="main-menu-bg">
+		<!-- 2/5 from left menu -->
+		<div id="modal-overlay"></div>
+		<div id="menu" class="flex flex-col items-start justify-center h-screen pl-20">
+			<img src="/img/logo-tc2.png" id="menu-logo" class="w-128" />
+			<h2 class="text-6xl menu-option inline-block" data-menu="play">Play</h2>
+			<br />
+			<h2 class="text-4xl menu-option inline-block" data-menu="loadout">Loadout</h2>
+			<br />
+			<h2 class="text-4xl menu-option inline-block" data-menu="settings">Settings</h2>
+			<br />
+			<h2 class="text-4xl menu-option menu-hidden" data-menu="quit">Quit</h2>
+			<h2 class="text-4xl menu-option menu-hidden" data-menu="disconnect">Disconnect</h2>
+		</div>
+		<div class="card-modal" data-modal="play">
+			<Cards>
+				<CardOption id="quickplay" name="Quickplay" desc="Join the best game we can find." />
+				<CardOption id="explore" name="Explore" desc="Choose your favorites to play." />
+				<CardOption id="host" name="Host" desc="Create your own game." />
+				<!--<CardOption id="community" name="Community" desc="Look for a group to play with." />-->
+				<!--<CardOption id="workshop" name="Workshop" desc="Play custom maps and modes." /> -->
+				<!--<CardOption id="training" name="Training" desc="Learn the ins and outs of TF2." /> -->
+			</Cards>
+		</div>
+		<script>
+			import { Do } from "@/util/do.tsx";
+
+			const handlers = {
+				"play": () => {
+					// cards modal
+					console.log("Play clicked");
+					toggleModal("play");
+				},
+				"loadout": () => {
+					Do("open_charinfo");
+				},
+				"settings": () => {
+					Do("OpenOptionsDialog");
+				},
+				"quit": () => {
+					Do("quit");
+				},
+				"disconnect": () => {
+					Do("disconnect");
+				},
+			}
+
+			// add click event listeners to menu options
+			const menuOptions = document.querySelectorAll(".menu-option");
+			menuOptions.forEach((option) => {
+				option.addEventListener("click", () => {
+					const menu = option.dataset.menu;
+					if (handlers[menu]) {
+						handlers[menu]();
+					}
+				});
+			});
+
+			function toggleModal(modalName) {
+				const modal = document.querySelector(`[data-modal='${modalName}']`);
+				if (modal.style.display === "none" || modal.style.display === "") {
+					modal.style.display = "block";
+					document.getElementById("modal-overlay").style.display = "block";
+				} else {
+					modal.style.display = "none";
+					document.getElementById("modal-overlay").style.display = "none";
+				}
+			}
+
+			document.getElementById("modal-overlay").addEventListener("click", () => {
+				// close all modals
+				const modals = document.querySelectorAll(".card-modal");
+				modals.forEach((modal) => {
+					modal.style.display = "none";
+				});
+				document.getElementById("modal-overlay").style.display = "none";
+			});
+
+			function setMenuState(state) {
+				const quitOption = document.querySelector("[data-menu='quit']");
+				const disconnectOption = document.querySelector("[data-menu='disconnect']");
+				if (state === "connected") {
+					quitOption.classList.add("menu-hidden");
+					disconnectOption.classList.remove("menu-hidden");
+					document.body.classList.add("main-menu-bg");
+				} else {
+					quitOption.classList.remove("menu-hidden");
+					disconnectOption.classList.add("menu-hidden");
+					document.body.classList.remove("main-menu-bg");
+				}
+			}
+
+			document.getElementById("quickplay").addEventListener("click", () => {
+				Do("find_game");
+				toggleModal("play");
+			});
+
+			document.getElementById("explore").addEventListener("click", () => {
+				Do("play_community");
+				toggleModal("play");
+			});
+
+			document.getElementById("host").addEventListener("click", () => {
+				Do("create_server");
+				toggleModal("play");
+			});
+
+			setMenuState("disconnected");
+		</script>
 	</body>
 </html>

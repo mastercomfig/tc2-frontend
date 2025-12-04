@@ -1,0 +1,253 @@
+{
+    "categories": [
+        {
+            "name": "Game",
+            "groups": [
+                {
+                    "name": "HUD",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Fast Weapon Switch",
+                            "tooltip": "",
+                            "cvar": "hud_fastswitch"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable Minimal HUD",
+                            "tooltip": "",
+                            "cvar": "cl_hud_minmode"
+                        }
+                    ]
+                },
+                {
+                    "name": "Damage",
+                    "settings": [
+                        {
+                            "type": "header",
+                            "label": "Hitsounds"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable Hitsounds",
+                            "tooltip": "",
+                            "cvar": "tf_dingalingaling"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Hitsound Volume",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_volume"
+                        },
+                        {
+                            "type": "select",
+                            "label": "Hitsound Type",
+                            "tooltip": "",
+                            "cvar": "tf_dingalingaling_effect",
+                            "options": [
+                                { "label": "Beepo", "value": "6" },
+                                { "label": "Ding", "value": "0" },
+                                { "label": "Electro", "value": "1" },
+                                { "label": "Notes", "value": "2" },
+                                { "label": "Percussion", "value": "3" },
+                                { "label": "Retro", "value": "4" },
+                                { "label": "Space", "value": "5" },
+                                { "label": "Vortex", "value": "7" },
+                                { "label": "Squasher", "value": "8" }
+                            ]
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Hitsound Pitch Min Damage",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_pitchmindmg"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Hitsound Pitch Max Damage",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_pitchmaxdmg"
+                        },
+                        {
+                            "type": "header",
+                            "label": "Killsound"
+                        },
+                        
+                        {
+                            "type": "header",
+                            "label": "Damage Numbers"
+                        }
+                    ]
+
+                },
+                {
+                    "name": "Demoman",
+                    "icon": "demoman",
+                    "settings": [
+
+                    ]
+                },
+                {
+                    "name": ""
+                },
+                {
+                    "name": "Engineer",
+                    "icon": "engineer",
+                    "settings": [
+                    ]
+                },
+                {
+                    "name": "Medic",
+                    "icon": "medic",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Medigun continues healing without holding down fire button",
+                            "tooltip": "tf_medigun_autoheal"
+                        },
+                        {
+                            "type": "header",
+                            "label": "Injured Teammate Indicator"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable injured teammate indicator",
+                            "tooltip": "",
+                            "cvar": "hud_medicautocallers"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Injured teammate health percentage",
+                            "tooltip": "hud_medicautocallersthreshold"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Show injured teammate outlines",
+                            "tooltip": "",
+                            "cvar": "hud_medicautocallersglow"
+                        }
+                    ]
+                },
+                {
+                    "name": "Sniper",
+                    "icon": "sniper",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Sniper Rifle Zoom Behavior",
+                            "tooltip": "",
+                            "cvar": "cl_autorezoom",
+                            "options": [
+                                { "label": "Toggle Zoom", "value": "1" },
+                                { "label": "Auto Re-Zoom", "value": "1" },
+                                { "label": "Hold to Zoom", "value": "0" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Hide Crosshair When Zoomed In",
+                            "tooltip": "",
+                            "cvar": "tf_hud_no_crosshair_on_scope_zoom"
+                        }
+                    ]
+                },
+                {
+                    "name": "Spy",
+                    "icon": "spy",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Concise Disguise Menu",
+                            "tooltip": "",
+                            "cvar": "tf_simple_disguise_menu"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Show Revolver Accuracy",
+                            "tooltip": "",
+                            "cvar": "tf_revolver_dynamic_crosshair"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Video",
+            "groups": []
+        },
+        {
+            "name": "Audio",
+            "groups": []
+        },
+        {
+            "name": "Keyboard / Mouse",
+            "groups": []
+        },
+        {
+            "name": "Communication",
+            "groups": [
+                {
+                    "name": "Social",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Enable text chat",
+                            "tooltip": "",
+                            "cvar": "cl_enable_text_chat"
+                        },
+                        {
+                            "type": "multi",
+                            "label": "Text chat filters",
+                            "tooltip": "",
+                            "options": [
+                                { "label": "Joins/Leaves", "value": "1" },
+                                { "label": "Name Changes", "value": "2" },
+                                { "label": "Public Chat", "value": "4" },
+                                { "label": "Server Messages", "value": "8" },
+                                { "label": "Team Changes", "value": "16" },
+                                { "label": "Achievements", "value": "32" }
+                            ]
+                        },
+                        {
+                            "type": "button",
+                            "label": "Text Filter Settings",
+                            "tooltip": "",
+                            "cvar": "open_chat_filter_settings"
+                        },
+                        {
+                            "type": "select",
+                            "label": "Social Filter",
+                            "tooltip": "",
+                            "options": [
+                                { "label": "All", "value": "0" },
+                                { "label": "Friends and Teammates", "value": "1" },
+                                { "label": "Friends only", "value": "1" },
+                                { "label": "Nobody", "value": "2" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Anonymous Mode",
+                            "tooltip": "",
+                            "cvar": "cl_anonymous_mode"
+                        }
+                    ]
+                },
+                {
+                    "name": "Voice",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Enable voice chat",
+                            "tooltip": "",
+                            "cvar": "voice_modenable"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ping Wheel"
+                }
+            ]
+        }
+    ]
+}
