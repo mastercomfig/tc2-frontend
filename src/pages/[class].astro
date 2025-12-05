@@ -3,68 +3,74 @@ import "@/styles/global.css";
 
 // pages
 export async function getStaticPaths() {
-    return [
-        { params: { class: "scout" } },
-        { params: { class: "soldier" } },
-        { params: { class: "pyro" } },
-        { params: { class: "demoman" } },
-        { params: { class: "heavyweapons" } },
-        { params: { class: "engineer" } },
-        { params: { class: "medic" } },
-        { params: { class: "sniper" } },
-        { params: { class: "spy" } },
-    ];
-};
+  return [
+    { params: { class: "scout" } },
+    { params: { class: "soldier" } },
+    { params: { class: "pyro" } },
+    { params: { class: "demoman" } },
+    { params: { class: "heavyweapons" } },
+    { params: { class: "engineer" } },
+    { params: { class: "medic" } },
+    { params: { class: "sniper" } },
+    { params: { class: "spy" } },
+  ];
+}
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<style>
-			.main-menu-bg {
-				background: rgb(0 0 0 / 10%);
-			}
-			.scroll {
-				scrollbar-color: #b4b4b4 transparent;
-			}
-			#menu-logo {
-				filter: hue-rotate(222deg) drop-shadow(0 0 0.75rem rgba(182, 127, 72, 0.5));
-			}
-			.menu-option {
-				/* transition color, background and scale */
-				transition: color 0.2s ease-in-out, background 0.15s ease-in-out,
-					transform 0.15s ease-in-out;
-				padding: 0.5rem 1rem;
-				border-radius: 0.375rem;
-				cursor: pointer;
-				color: #b4b4b4;
-				transform: scale(1);
-				transform-origin: left;
-			}
-			.menu-option:hover {
-				color: rgb(255 153 51);
-				/* gradient */
-				background: linear-gradient(
-					90deg,
-					rgba(255, 153, 51, 0.2) 0%,
-					rgba(255, 153, 51, 0.1) 100%
-				);
-				transform: scale(1.1);
-			}
-		</style>
-	</head>
-	<body class="main-menu-bg">
-		<!-- 2/5 from left menu -->
-		<div id="menu" class="flex flex-col items-start justify-center h-screen gap-3 pl-20">
-			<img src="/img/logo-tc2.png" id="menu-logo" class="w-128" />
-			<h2 class="text-6xl menu-option inline-block">Play</h2>
-			<br />
-			<h2 class="text-4xl menu-option inline-block">Loadout</h2>
-			<br />
-			<h2 class="text-4xl menu-option inline-block">Settings</h2>
-			<br />
-			<h2 class="text-4xl menu-option inline-block">Quit</h2>
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      .main-menu-bg {
+        background: rgb(0 0 0 / 10%);
+      }
+      .scroll {
+        scrollbar-color: #b4b4b4 transparent;
+      }
+      #menu-logo {
+        filter: hue-rotate(222deg)
+          drop-shadow(0 0 0.75rem rgba(182, 127, 72, 0.5));
+      }
+      .menu-option {
+        /* transition color, background and scale */
+        transition:
+          color 0.2s ease-in-out,
+          background 0.15s ease-in-out,
+          transform 0.15s ease-in-out;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        color: #b4b4b4;
+        transform: scale(1);
+        transform-origin: left;
+      }
+      .menu-option:hover {
+        color: rgb(255 153 51);
+        /* gradient */
+        background: linear-gradient(
+          90deg,
+          rgba(255, 153, 51, 0.2) 0%,
+          rgba(255, 153, 51, 0.1) 100%
+        );
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body class="main-menu-bg">
+    <!-- 2/5 from left menu -->
+    <div
+      id="menu"
+      class="flex flex-col items-start justify-center h-screen gap-3 pl-20"
+    >
+      <img src="/img/logo-tc2.png" id="menu-logo" class="w-128" />
+      <h2 class="text-6xl menu-option inline-block">Play</h2>
+      <br />
+      <h2 class="text-4xl menu-option inline-block">Loadout</h2>
+      <br />
+      <h2 class="text-4xl menu-option inline-block">Settings</h2>
+      <br />
+      <h2 class="text-4xl menu-option inline-block">Quit</h2>
+    </div>
+  </body>
 </html>
