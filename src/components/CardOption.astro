@@ -7,20 +7,79 @@ const { id, name, desc } = Astro.props;
 <!-- paper ticket cards -->
 
 <style>
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px) rotateX(-15deg);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+    }
+
+    @keyframes cardPress {
+        0% {
+            transform: scale(1) translateZ(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        50% {
+            transform: scale(0.98) translateZ(-10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        100% {
+            transform: scale(1) translateZ(0);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+
     .paper-card {
-        background: rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
         border-radius: 0.5rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 1rem;
         text-align: center;
         color: #fff;
-        user-select: none;
         cursor: pointer;
-        transition: transform 0.2s ease-in-out;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-style: preserve-3d;
+        white-space: nowrap
+    }
+
+    .paper-card-wrapper {
+        animation: slideInUp 0.6s ease-out both;
+    }
+
+    .paper-card-wrapper:nth-child(1) {
+        animation-delay: 0.1s;
+
+        > .paper-card:hover {
+            transform: scale(1.08) rotateX(3deg) rotateZ(1deg);
+        }
+    }
+
+    .paper-card-wrapper:nth-child(2) {
+        animation-delay: 0.2s;
+
+        > .paper-card:hover {
+            transform: scale(1.08) rotateX(-3deg) rotateZ(-1deg);
+        }
+    }
+
+    .paper-card-wrapper:nth-child(3) {
+        animation-delay: 0.3s;
+
+        > .paper-card:hover {
+            transform: scale(1.08) rotateX(12deg) rotateZ(2deg);
+        }
     }
 
     .paper-card h1 {
@@ -35,12 +94,19 @@ const { id, name, desc } = Astro.props;
     }
 
     .paper-card:hover {
-        transform: scale(1.05);
+        outline: 5px solid rgba(255, 153, 51, 1);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .paper-card-wrapper:active {
+        animation: cardPress 0.4s ease-in-out;
     }
 </style>
 
-<div id={id} class="paper-card animation-card w-64">
-    <img src={`/img/cards/${id}.png`} alt="" class="w-full h-auto" />
-    <h1>{name}</h1>
-    <p>{desc}</p>
+<div class="paper-card-wrapper">
+    <div id={id} class="paper-card animation-card w-64 h-full">
+        <img src={`/img/cards/${id}.png`} alt="" class="w-full h-auto" />
+        <h1>{name}</h1>
+        <p class="tf2-light">{desc}</p>
+    </div>
 </div>

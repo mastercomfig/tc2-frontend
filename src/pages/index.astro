@@ -9,6 +9,46 @@ import "@/styles/global.css";
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<style>
+			@keyframes modalFadeIn {
+				from {
+					opacity: 0;
+					transform: translate(-50%, -50%) scale(0.95);
+				}
+				to {
+					opacity: 1;
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
+
+			@keyframes modalFadeOut {
+				from {
+					opacity: 1;
+					transform: translate(-50%, -50%) scale(1);
+				}
+				to {
+					opacity: 0;
+					transform: translate(-50%, -50%) scale(0.95);
+				}
+			}
+
+			@keyframes overlayFadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes overlayFadeOut {
+				from {
+					opacity: 1;
+				}
+				to {
+					opacity: 0;
+				}
+			}
+
 			.main-menu-bg {
 				background: rgb(0 0 0 / 10%);
 			}
@@ -26,7 +66,6 @@ import "@/styles/global.css";
 				border-radius: 0.375rem;
 				cursor: pointer;
 				color: #b4b4b4;
-				user-select: none;
 				transform: scale(1);
 				transform-origin: left;
 				display: inline-block;
@@ -49,13 +88,21 @@ import "@/styles/global.css";
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				background: rgba(0, 0, 0, 0.8);
+				background: rgba(0, 0, 0, 0.9);
 				padding: 2rem;
 				border-radius: 1rem;
-				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 				display: none; /* hidden by default */
 				z-index: 10;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 153, 51, 0.2);
+				animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 			}
+
+			.card-modal.closing {
+				animation: modalFadeOut 0.3s ease-in forwards;
+			}
+
 			#modal-overlay {
 				position: fixed;
 				top: 0;
@@ -65,6 +112,12 @@ import "@/styles/global.css";
 				background: rgba(0, 0, 0, 0.5);
 				display: none; /* hidden by default */
 				z-index: 5;
+				animation: overlayFadeIn 0.4s ease-in forwards;
+				transition: none;
+			}
+
+			#modal-overlay.closing {
+				animation: overlayFadeOut 0.3s ease-in forwards;
 			}
 		</style>
 	</head>
@@ -128,22 +181,42 @@ import "@/styles/global.css";
 
 			function toggleModal(modalName) {
 				const modal = document.querySelector(`[data-modal='${modalName}']`);
+				const overlay = document.getElementById("modal-overlay");
+				
 				if (modal.style.display === "none" || modal.style.display === "") {
 					modal.style.display = "block";
-					document.getElementById("modal-overlay").style.display = "block";
+					overlay.style.display = "block";
+					// Trigger animation
+					requestAnimationFrame(() => {
+						modal.classList.remove('closing');
+						overlay.classList.remove('closing');
+					});
 				} else {
-					modal.style.display = "none";
-					document.getElementById("modal-overlay").style.display = "none";
+					modal.classList.add('closing');
+					overlay.classList.add('closing');
+					setTimeout(() => {
+						modal.style.display = "none";
+						overlay.style.display = "none";
+					}, 300);
 				}
 			}
 
 			document.getElementById("modal-overlay").addEventListener("click", () => {
 				// close all modals
 				const modals = document.querySelectorAll(".card-modal");
+				const overlay = document.getElementById("modal-overlay");
+				
 				modals.forEach((modal) => {
-					modal.style.display = "none";
+					modal.classList.add('closing');
 				});
-				document.getElementById("modal-overlay").style.display = "none";
+				overlay.classList.add('closing');
+				
+				setTimeout(() => {
+					modals.forEach((modal) => {
+						modal.style.display = "none";
+					});
+					overlay.style.display = "none";
+				}, 300);
 			});
 
 			function setMenuState(state) {
