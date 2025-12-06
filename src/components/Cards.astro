@@ -4,27 +4,33 @@ import "@/styles/global.css";
 const { id } = Astro.props;
 ---
 
-<!-- align height of all cards -->
-<div class="flex items-stretch justify-center gap-4 p-4 flex-row">
-  <slot />
-</div>
+<button-player>
+  <div class="flex items-stretch justify-center gap-4 p-4 flex-row" id={id}>
+    <slot />
+  </div>
+</button-player>
 
-<script define:vars={{ id }}>
+<script>
   import { playSound } from "@/util/playSound";
+  
+  class ButtonPlayer extends HTMLElement {
+    connectedCallback() {
+      const cardElements = this.querySelectorAll(".paper-card");
+      cardElements.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          playSound("ui/buttonrollover.wav");
+        });
 
-  const cards = document.getElementById(id);
-  const cardElements = cards.querySelectorAll(".paper-card");
-  cardElements.forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-      playSound("ui/buttonrollover.wav");
-    });
+        card.addEventListener("click", () => {
+          playSound("ui/buttonclickrelease.wav");
+        });
 
-    card.addEventListener("click", () => {
-      playSound("ui/buttonclickrelease.wav");
-    });
+        card.addEventListener("pointerdown", () => {
+          playSound("ui/buttonclick.wav");
+        });
+      });
+    }
+  }
 
-    card.addEventListener("pointerdown", () => {
-      playSound("ui/buttonclick.wav");
-    });
-  });
+  customElements.define('button-player', ButtonPlayer);
 </script>

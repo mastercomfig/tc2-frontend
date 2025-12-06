@@ -1,6 +1,7 @@
 ---
 import CardOption from "@/components/CardOption.astro";
 import Cards from "@/components/Cards.astro";
+import { SettingsView } from "@/components/settings/SettingsView";
 import "@/styles/global.css";
 ---
 
@@ -86,24 +87,25 @@ import "@/styles/global.css";
         );
         transform: scale(1.1);
       }
-      .card-modal {
+      .modal {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.9);
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         display: none; /* hidden by default */
         z-index: 10;
+        transform: translate(-50%, -50%);
+        animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        background: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .modal.closing {
+        animation: modalFadeOut 0.3s ease-in forwards;
+      }
+      .card-modal {
+        padding: 2rem;
+        border-radius: 1rem;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 153, 51, 0.2);
-        animation: modalFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      }
-
-      .card-modal.closing {
-        animation: modalFadeOut 0.3s ease-in forwards;
       }
 
       #modal-overlay {
@@ -125,7 +127,6 @@ import "@/styles/global.css";
     </style>
   </head>
   <body class="main-menu-bg">
-    <!-- 2/5 from left menu -->
     <div id="modal-overlay"></div>
     <div
       id="menu"
@@ -147,7 +148,7 @@ import "@/styles/global.css";
         Disconnect
       </h2>
     </div>
-    <div class="card-modal" data-modal="play">
+    <div class="card-modal modal" data-modal="play">
       <Cards id="play-cards">
         <CardOption
           id="quickplay"
@@ -165,6 +166,9 @@ import "@/styles/global.css";
         <!--<CardOption id="training" name="Training" desc="Learn the ins and outs of TF2." /> -->
       </Cards>
     </div>
+    <div class="modal" data-modal="settings">
+      <SettingsView client:only="react" />
+    </div>
     <script>
       import { Do } from "@/util/do.ts";
       import { playSound } from "@/util/playSound";
@@ -179,7 +183,8 @@ import "@/styles/global.css";
           Do("open_charinfo");
         },
         settings: () => {
-          Do("OpenOptionsDialog");
+          //Do("OpenOptionsDialog");
+          toggleModal("settings");
         },
         quit: () => {
           Do("quit");
@@ -236,7 +241,7 @@ import "@/styles/global.css";
 
       document.getElementById("modal-overlay").addEventListener("click", () => {
         // close all modals
-        const modals = document.querySelectorAll(".card-modal");
+        const modals = document.querySelectorAll(".modal");
         const overlay = document.getElementById("modal-overlay");
 
         modals.forEach((modal) => {

@@ -81,22 +81,6 @@
 
                 },
                 {
-                    "name": "Demoman",
-                    "icon": "demoman",
-                    "settings": [
-
-                    ]
-                },
-                {
-                    "name": ""
-                },
-                {
-                    "name": "Engineer",
-                    "icon": "engineer",
-                    "settings": [
-                    ]
-                },
-                {
                     "name": "Medic",
                     "icon": "medic",
                     "settings": [
@@ -173,15 +157,278 @@
         },
         {
             "name": "Video",
-            "groups": []
+            "groups": [
+                {
+                    "name": "Display",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Display Mode",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Exclusive Fullscreen", "value": "0" },
+                                { "label": "Windowed", "value": "1" },
+                                { "label": "Borderless Window", "value": "2" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Aspect Ratio",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "4:3", "value": "0" },
+                                { "label": "16:10", "value": "1" },
+                                { "label": "16:9", "value": "2" },
+                                { "label": "21:9", "value": "3" },
+                                { "label": "All", "value": "4" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Size",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Use Native Resolution", "value": "0" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "V-Sync",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "cvar": "mat_vsync"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Maximum frames per second allowed",
+                            "tooltip": "",
+                            "cvar": "fps_max_game",
+                            "min": 60,
+                            "max": 1000
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Main menu maximum frames per second allowed",
+                            "tooltip": "",
+                            "cvar": "fps_max_ui",
+                            "min": 60,
+                            "max": 240
+                        }
+                    ]
+                },
+                {
+                    "name": "Graphics",
+                    "settings": [
+                        {
+                            "type": "slider",
+                            "label": "Brightness",
+                            "tooltip": "",
+                            "cvar": "mat_monitorgamma",
+                            "min": 0.5,
+                            "max": 1.5
+                        },
+                        {
+                            "type": "check",
+                            "label": "Motion Blur",
+                            "tooltip": "",
+                            "cvar": "mat_motion_blur_enabled"
+                        }
+                    ]
+                },
+                {
+                    "name": "Graphics Quality",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Graphics Preset",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "id": "graphics-preset",
+                            "options": [
+                                { "label": "Performance Mode", "value": "0" },
+                                { "label": "Low", "value": "1" },
+                                { "label": "Medium", "value": "2" },
+                                { "label": "High", "value": "3" },
+                                { "label": "Ultra", "value": "4" },
+                                { "label": "Custom", "value": "5" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Shadows",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "id": "shadows",
+                            "options": [
+                                { "label": "Off", "value": "0" },
+                                { "label": "Low", "value": "1" },
+                                { "label": "Medium", "value": "2" },
+                                { "label": "High", "value": "3" },
+                                { "label": "Ultra", "value": "4" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Lighting",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" },
+                                { "label": "Ultra", "value": "3" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Textures",
+                            "tooltip": "",
+                            "cvar": "mat_picmip",
+                            "options": [
+                                { "label": "Low", "value": "2" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "0" },
+                                { "label": "Ultra", "value": "-1" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Model Quality",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" },
+                                { "label": "Ultra", "value": "3" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Effects",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" },
+                                { "label": "Ultra", "value": "3" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Post Processing",
+                            "tooltip": "",
+                            "needsCallback": true,
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" },
+                                { "label": "Ultra", "value": "3" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Advanced",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Show FPS",
+                            "tooltip": "",
+                            "cvar": "cl_showfps"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "Audio",
-            "groups": []
+            "groups": [
+                {
+                    "name": "Volume",
+                    "settings": [
+                        {
+                            "type": "slider",
+                            "label": "Main",
+                            "tooltip": "",
+                            "cvar": "snd_mastervolume",
+                            "min": 0,
+                            "max": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Music",
+                            "tooltip": "",
+                            "cvar": "snd_musicvolume",
+                            "min": 0,
+                            "max": 1
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "Keyboard / Mouse",
-            "groups": []
+            "groups": [
+                {
+                    "name": "Mouse",
+                    "settings": [
+                        {
+                            "type": "slider",
+                            "label": "Mouse Sensitivity",
+                            "tooltip": "",
+                            "cvar": "sensitivity",
+                            "min": 0,
+                            "max": 6,
+                            "step": 0.01
+                        },
+                        {
+                            "type": "check",
+                            "label": "Invert Mouse Y-Axis",
+                            "tooltip": "",
+                            "cvar": "m_pitch"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable Mouse Acceleration",
+                            "tooltip": "",
+                            "cvar": "m_customaccel"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Mouse Acceleration",
+                            "tooltip": "",
+                            "cvar": "m_customaccel_exponent"
+                        }
+                    ]
+                },
+                {
+                    "name": "Keyboard",
+                    "settings": [
+                        {
+                            "type": "button",
+                            "label": "Edit Keybindings",
+                            "tooltip": "",
+                            "cvar": "open_keybindings_menu"
+                        }
+                    ]
+                },
+                {
+                    "name": "Advanced",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Enable Developer Console",
+                            "tooltip": "",
+                            "cvar": "con_enable"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "Communication",
@@ -196,40 +443,10 @@
                             "cvar": "cl_enable_text_chat"
                         },
                         {
-                            "type": "multi",
-                            "label": "Text chat filters",
-                            "tooltip": "",
-                            "options": [
-                                { "label": "Joins/Leaves", "value": "1" },
-                                { "label": "Name Changes", "value": "2" },
-                                { "label": "Public Chat", "value": "4" },
-                                { "label": "Server Messages", "value": "8" },
-                                { "label": "Team Changes", "value": "16" },
-                                { "label": "Achievements", "value": "32" }
-                            ]
-                        },
-                        {
                             "type": "button",
                             "label": "Text Filter Settings",
                             "tooltip": "",
                             "cvar": "open_chat_filter_settings"
-                        },
-                        {
-                            "type": "select",
-                            "label": "Social Filter",
-                            "tooltip": "",
-                            "options": [
-                                { "label": "All", "value": "0" },
-                                { "label": "Friends and Teammates", "value": "1" },
-                                { "label": "Friends only", "value": "1" },
-                                { "label": "Nobody", "value": "2" }
-                            ]
-                        },
-                        {
-                            "type": "check",
-                            "label": "Anonymous Mode",
-                            "tooltip": "",
-                            "cvar": "cl_anonymous_mode"
                         }
                     ]
                 },
@@ -243,9 +460,6 @@
                             "cvar": "voice_modenable"
                         }
                     ]
-                },
-                {
-                    "name": "Ping Wheel"
                 }
             ]
         }
