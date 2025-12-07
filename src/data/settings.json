@@ -457,6 +457,50 @@
                             "cvar": "ds_autodelete"
                         }
                     ]
+                },
+                {
+                    "name": "Networking",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Network Quality",
+                            "tooltip": "Select how the game should account for your network quality. Lower settings may increase latency but improve overall stability.",
+                            "cvar": "sg_net",
+                            "options": [
+                                { "label": "Poor", "value": "0", "tooltip": "I have a poor quality network." },
+                                { "label": "Okay", "value": "1", "tooltip": "I have an okay quality network." },
+                                { "label": "High-end", "value": "2", "tooltip": "I have a high quality network." }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Bandwidth",
+                            "cvar": "rate",
+                            "tooltip": "Select the bandwidth setting that best matches your internet download speed.",
+                            "options": [
+                                { "label": "Up to 128 Kbps", "value": "16000" },
+                                { "label": "Up to 762 Kbps", "value": "80000" },
+                                { "label": "Up to 1.0 Mbps", "value": "131072" },
+                                { "label": "Up to 1.5 Mbps", "value": "196608" },
+                                { "label": "Up to 2.0 Mbps", "value": "262144" },
+                                { "label": "Up to 2.5 Mbps", "value": "327680" },
+                                { "label": "Up to 3.0 Mbps", "value": "393216" },
+                                { "label": "Up to 4.0 Mbps", "value": "524288" },
+                                { "label": "Up to 6.0 Mbps", "value": "786432" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Show Network Information",
+                            "tooltip": "If set, network performance information such as ping and packet loss will be displayed on the HUD.",
+                            "cvar": "net_graph",
+                            "options": [
+                                { "label": "Off", "value": "0" },
+                                { "label": "Basic", "value": "1" },
+                                { "label": "Detailed", "value": "4" }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -542,10 +586,31 @@
                             "max": 1.5
                         },
                         {
+                            "type": "slider",
+                            "label": "Field of View (FOV)",
+                            "tooltip": "The field of view of your camera. Higher values allow you to see more of the world, but feel further away.",
+                            "cvar": "fov_desired",
+                            "min": 75,
+                            "max": 90
+                        },
+                        {
                             "type": "check",
                             "label": "Motion Blur",
                             "tooltip": "",
                             "cvar": "mat_motion_blur_enabled"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Show First Person Bullet Tracers",
+                            "tooltip": "",
+                            "cvar": "r_drawtracers_firstperson"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Low Violence Mode",
+                            "tooltip": "",
+                            "mode": "flip",
+                            "cvar": "violence_hblood"
                         }
                     ]
                 },
@@ -554,25 +619,9 @@
                     "settings": [
                         {
                             "type": "select",
-                            "label": "Graphics Preset",
-                            "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "preset",
-                            "options": [
-                                { "label": "Performance Mode", "value": "0" },
-                                { "label": "Low", "value": "1" },
-                                { "label": "Medium", "value": "2" },
-                                { "label": "High", "value": "3" },
-                                { "label": "Ultra", "value": "4" },
-                                { "label": "Custom", "value": "5" }
-                            ]
-                        },
-                        {
-                            "type": "select",
                             "label": "Shadows",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "shadows",
+                            "cvar": "sg_shadows",
                             "options": [
                                 { "label": "Off", "value": "0" },
                                 { "label": "Low", "value": "1" },
@@ -583,10 +632,9 @@
                         },
                         {
                             "type": "select",
-                            "label": "Lighting",
+                            "label": "Shader quality",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "lighting",
+                            "cvar": "sg_shaders",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -622,8 +670,7 @@
                             "type": "select",
                             "label": "Effects",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "effects",
+                            "cvar": "sg_effects",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -633,15 +680,50 @@
                         },
                         {
                             "type": "select",
-                            "label": "Post Processing",
+                            "label": "Reflections",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "postprocess",
+                            "cvar": "sg_reflections",
                             "options": [
-                                { "label": "Low", "value": "0" },
+                                { "label": "Off", "value": "0" },
                                 { "label": "Medium", "value": "1" },
                                 { "label": "High", "value": "2" },
                                 { "label": "Ultra", "value": "3" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Post Processing",
+                            "tooltip": "",
+                            "cvar": "sg_postprocess",
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Anti-Aliasing",
+                            "tooltip": "",
+                            "cvar": "mat_antialias",
+                            "options": [
+                                { "label": "None", "value": "1" },
+                                { "label": "2x MSAA", "value": "2" },
+                                { "label": "4x MSAA", "value": "4" },
+                                { "label": "8x MSAA", "value": "8" }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "label": "Texture Filtering",
+                            "tooltip": "",
+                            "cvar": "mat_forceaniso",
+                            "options": [
+                                { "label": "Trilinear", "value": "1" },
+                                { "label": "Anisotropic 2x", "value": "2" },
+                                { "label": "Anisotropic 4x", "value": "4" },
+                                { "label": "Anisotropic 8x", "value": "8" },
+                                { "label": "Anisotropic 16x", "value": "16" }
                             ]
                         }
                     ]
@@ -667,8 +749,8 @@
                     "settings": [
                         {
                             "type": "slider",
-                            "label": "Main",
-                            "tooltip": "",
+                            "label": "Main Volume",
+                            "tooltip": "The main volume of the game. All other volume settings are relative to this.",
                             "cvar": "volume",
                             "min": 0,
                             "max": 1,
@@ -676,8 +758,8 @@
                         },
                         {
                             "type": "slider",
-                            "label": "Music",
-                            "tooltip": "",
+                            "label": "Music Volume",
+                            "tooltip": "The volume of music on the main menu and in-game.",
                             "cvar": "snd_musicvolume",
                             "min": 0,
                             "max": 1,
@@ -710,8 +792,7 @@
                             "type": "select",
                             "label": "Sound Quality",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "cvar": "sound",
+                            "cvar": "sg_sound",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -720,8 +801,9 @@
                         },
                         {
                             "type": "check",
-                            "label": "Silence Sound in Desktop",
-                            "tooltip": "",
+                            "label": "Play Sound in Desktop",
+                            "tooltip": "Play sound even when the game is in the background",
+                            "mode": "negate",
                             "cvar": "snd_mute_losefocus"
                         }
                     ]

@@ -12,6 +12,8 @@ export function SettingsCheck({ setting }) {
           const floatVal = parseFloat(response);
           setValue(floatVal < 0.0);
           setFloatValue(floatVal);
+        } else if (setting.mode === "flip") {
+          setValue(response === "0");
         } else {
           setValue(response !== "0");
         }
@@ -23,6 +25,9 @@ export function SettingsCheck({ setting }) {
     if (setting.mode === "negate") {
       const f = val ? -Math.abs(floatValue) : Math.abs(floatValue);
       runRpc("setcvar", `${setting.cvar} ${f}`);
+    } else if (setting.mode === "flip") {
+      const b = val ? "0" : "1";
+      runRpc("setcvar", `${setting.cvar} ${b}`);
     } else {
       const b = val ? "1" : "0";
       runRpc("setcvar", `${setting.cvar} ${b}`);

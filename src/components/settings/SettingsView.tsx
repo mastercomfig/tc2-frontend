@@ -3,6 +3,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useState } from "react";
 import "./SettingsView.css"
 import { SettingsCategory } from "./SettingsCategory";
+import { SettingsSearch } from "./SettingsSearch";
 
 type SettingsData = typeof settings;
 const settingsData = settings as SettingsData;
@@ -19,8 +20,9 @@ export function SettingsView() {
 
   return (
     <div className="SettingsView-background p-8 rounded-lg shadow-lg mx-auto dark">
-      <h1 className="text-5xl text-center SettingsView-main-title mb-4">Options</h1>
-      <TabGroup className="flex flex-col flex-1 h-0" onChange={(index) => setSelectedIndex(index)}>
+      <h1 className="text-5xl text-center SettingsView-main-title mb-2">Options</h1>
+      <SettingsSearch setSelectedGroup={setSelectedIndex} />
+      <TabGroup className="flex flex-col flex-1 h-0" selectedIndex={selectedIndex} onChange={(index) => setSelectedIndex(index)}>
         <TabList className="flex justify-center space-x-4 tf2-bold text-2xl">
           {tabs.map((tab, index) => (
             <Tab
