@@ -9,6 +9,7 @@ import "@/styles/global.css";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="preload" href="/img/logo-tc2.png" as="image" />
     <style>
       @keyframes modalFadeIn {
         from {
@@ -172,6 +173,7 @@ import "@/styles/global.css";
     <script>
       import { Do } from "@/util/do.ts";
       import { playSound } from "@/util/playSound";
+      import { runRpc } from "@/util/ws";
 
       const handlers = {
         play: () => {

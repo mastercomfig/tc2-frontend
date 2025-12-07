@@ -17,11 +17,80 @@
                             "label": "Enable Minimal HUD",
                             "tooltip": "",
                             "cvar": "cl_hud_minmode"
+                        },
+                        {
+                            "type": "select",
+                            "label": "HUD Aspect Ratio",
+                            "tooltip": "",
+                            "cvar": "cl_hud_aspect",
+                            "options": [
+                                { "label": "Default Centered (4:3)", "value": "1" },
+                                { "label": "Fully Centered (1:1)", "value": "2" },
+                                { "label": "16:9", "value": "3" },
+                                { "label": "16:10", "value": "4" },
+                                { "label": "Fit Display", "value": "0" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Hide HUD During Freezecam Screenshots",
+                            "tooltip": "",
+                            "cvar": "hud_freezecamhide"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Disable Floating Health Bar",
+                            "tooltip": "",
+                            "cvar": "tf_hud_target_id_disable_floating_health"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Target ID Transparency",
+                            "tooltip": "",
+                            "cvar": "tf_hud_target_id_alpha",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "select",
+                            "label": "Mouse Input on the Scoreboard",
+                            "tooltip": "",
+                            "cvar": "tf_scoreboard_mouse_mode",
+                            "options": [
+                                { "label": "Disabled", "value": "0" },
+                                { "label": "Enabled On Click", "value": "2" },
+                                { "label": "Always Enabled", "value": "1" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Display Ping Values as Text on the Scoreboard",
+                            "tooltip": "",
+                            "cvar": "tf_scoreboard_ping_as_text"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Display Alternate Class Icons on the Scoreboard",
+                            "tooltip": "",
+                            "cvar": "tf_scoreboard_alt_class_icons"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Use the Team Status Display in the HUD",
+                            "tooltip": "",
+                            "cvar": "tf_use_match_hud"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Disable HTML MOTDs",
+                            "tooltip": "",
+                            "cvar": "cl_disablehtmlmotd"
                         }
                     ]
                 },
                 {
-                    "name": "Damage",
+                    "name": "Hitsounds",
                     "settings": [
                         {
                             "type": "header",
@@ -37,7 +106,10 @@
                             "type": "slider",
                             "label": "Hitsound Volume",
                             "tooltip": "",
-                            "cvar": "tf_dingaling_volume"
+                            "cvar": "tf_dingaling_volume",
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
                         },
                         {
                             "type": "select",
@@ -60,25 +132,153 @@
                             "type": "slider",
                             "label": "Hitsound Pitch Min Damage",
                             "tooltip": "",
-                            "cvar": "tf_dingaling_pitchmindmg"
+                            "cvar": "tf_dingaling_pitchmindmg",
+                            "min": 1,
+                            "max": 255,
+                            "step": 0.01
                         },
                         {
                             "type": "slider",
                             "label": "Hitsound Pitch Max Damage",
                             "tooltip": "",
-                            "cvar": "tf_dingaling_pitchmaxdmg"
+                            "cvar": "tf_dingaling_pitchmaxdmg",
+                            "min": 1,
+                            "max": 255,
+                            "step": 0.01
                         },
                         {
                             "type": "header",
                             "label": "Killsound"
                         },
-                        
                         {
-                            "type": "header",
-                            "label": "Damage Numbers"
+                            "type": "check",
+                            "label": "Enable Killsounds",
+                            "tooltip": "",
+                            "cvar": "tf_dingalingaling_lasthit"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Killsound Volume",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_lasthit_volume",
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
+                        },
+                        {
+                            "type": "select",
+                            "label": "Killsound Type",
+                            "tooltip": "",
+                            "cvar": "tf_dingalingaling_lasthit_effect",
+                            "options": [
+                                { "label": "Beepo", "value": "6" },
+                                { "label": "Ding", "value": "0" },
+                                { "label": "Electro", "value": "1" },
+                                { "label": "Notes", "value": "2" },
+                                { "label": "Percussion", "value": "3" },
+                                { "label": "Retro", "value": "4" },
+                                { "label": "Space", "value": "5" },
+                                { "label": "Vortex", "value": "7" },
+                                { "label": "Squasher", "value": "8" }
+                            ]
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Killsound Pitch Min Damage",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_lasthit_pitchmindmg",
+                            "min": 1,
+                            "max": 255,
+                            "step": 0.01
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Killsound Pitch Max Damage",
+                            "tooltip": "",
+                            "cvar": "tf_dingaling_lasthit_pitchmaxdmg",
+                            "min": 1,
+                            "max": 255,
+                            "step": 0.01
                         }
                     ]
-
+                },
+                {
+                    "name": "Damage",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Enable Hitmarker",
+                            "tooltip": "",
+                            "cvar": "cl_hitmarker"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable Damage Numbers",
+                            "tooltip": "",
+                            "cvar": "hud_combattext"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Large Damage Numbers",
+                            "tooltip": "",
+                            "cvar": "hud_combattext_large"
+                        }
+                    ]
+                },
+                {
+                    "name": "Viewmodels",
+                    "settings": [
+                        {
+                            "type": "slider",
+                            "label": "Viewmodel Field of View",
+                            "tooltip": "",
+                            "cvar": "viewmodel_fov",
+                            "min": 54,
+                            "max": 70,
+                            "step": 1
+                        },
+                        {
+                            "type": "check",
+                            "label": "Flip Viewmodels",
+                            "tooltip": "",
+                            "cvar": "cl_flipviewmodels"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Use Minimized Viewmodels",
+                            "tooltip": "",
+                            "cvar": "tf_use_min_viewmodels"
+                        }
+                    ]
+                },
+                {
+                    "name": "General",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Auto-Kill After Choosing a Player Class",
+                            "tooltip": "",
+                            "cvar": "hud_classautokill"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Auto-Respawn After Loadout Changes in Respawn Rooms",
+                            "tooltip": "",
+                            "cvar": "tf_respawn_on_loadoutchanges"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Remember the Active Weapon Between Lives",
+                            "tooltip": "",
+                            "cvar": "tf_remember_activeweapon"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Remember the 'Previous Weapon' Between Lives",
+                            "tooltip": "",
+                            "cvar": "tf_remember_lastweapon"
+                        }
+                    ]
                 },
                 {
                     "name": "Medic",
@@ -90,8 +290,14 @@
                             "tooltip": "tf_medigun_autoheal"
                         },
                         {
+                            "type": "check",
+                            "label": "Display a Marker Over The Player You Are Healing",
+                            "tooltip": "",
+                            "cvar": "hud_medichealtargetmarker"
+                        },
+                        {
                             "type": "header",
-                            "label": "Injured Teammate Indicator"
+                            "label": "Injured Teammates Automatically Call Out"
                         },
                         {
                             "type": "check",
@@ -100,9 +306,13 @@
                             "cvar": "hud_medicautocallers"
                         },
                         {
-                            "type": "check",
+                            "type": "slider",
                             "label": "Injured teammate health percentage",
-                            "tooltip": "hud_medicautocallersthreshold"
+                            "tooltip": "",
+                            "cvar": "hud_medicautocallersthreshold",
+                            "min": 10,
+                            "max": 100,
+                            "step": 1
                         },
                         {
                             "type": "check",
@@ -116,6 +326,12 @@
                     "name": "Sniper",
                     "icon": "sniper",
                     "settings": [
+                        {
+                            "type": "check",
+                            "label": "Play a Sound When the Sniper Rifle is Fully Charged",
+                            "tooltip": "",
+                            "cvar": "tf_sniper_fullcharge_bell"
+                        },
                         {
                             "type": "select",
                             "label": "Sniper Rifle Zoom Behavior",
@@ -152,6 +368,94 @@
                             "cvar": "tf_revolver_dynamic_crosshair"
                         }
                     ]
+                },
+                {
+                    "name": "Spectating",
+                    "settings": [
+                        {
+                            "type": "check",
+                            "label": "Show Non-Standard Items on Spectated Player",
+                            "tooltip": "",
+                            "cvar": "cl_spec_carrieditems"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Use Advanced Spectator HUD in Tournament Mode",
+                            "tooltip": "",
+                            "cvar": "cl_use_tournament_specgui"
+                        },
+                        {
+                            "type": "select",
+                            "label": "Spectator Target ID Location",
+                            "tooltip": "",
+                            "cvar": "tf_spectator_target_location",
+                            "options": [
+                                { "label": "Default", "value": "0" },
+                                { "label": "Bottom Left Corner", "value": "1" },
+                                { "label": "Bottom Center", "value": "2" },
+                                { "label": "Bottom Right Corner", "value": "3" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "When Spectating, View World From the Eyes of a Pyro",
+                            "tooltip": "",
+                            "cvar": "tf_spectate_pyrovision"
+                        }
+                    ]
+                },
+                {
+                    "name": "Recording",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Recording Mode",
+                            "tooltip": "",
+                            "cvar": "ds_enable",
+                            "options": [
+                                { "label": "Manual", "value": "0" },
+                                { "label": "Auto-Record Matchmaking Matches", "value": "1" },
+                                { "label": "Auto-Record All Matches", "value": "2" },
+                                { "label": "Auto-Record Tournament Matches", "value": "3" },
+                                { "label": "Auto-Record Competitive Matches", "value": "4" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Play Sounds For Start/Stop Events",
+                            "tooltip": "",
+                            "cvar": "ds_sound"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Log Events",
+                            "tooltip": "",
+                            "cvar": "ds_log"
+                        },
+                        {
+                            "type": "select",
+                            "label": "Location of the In-Game Notifications",
+                            "tooltip": "",
+                            "cvar": "ds_notify",
+                            "options": [
+                                { "label": "Console Only", "value": "0" },
+                                { "label": "Console and Chat Window", "value": "1" },
+                                { "label": "Console and HUD", "value": "2" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Auto-Save a Scoreboard Screenshot at the End of a Match",
+                            "tooltip": "",
+                            "cvar": "ds_screens"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Auto-Delete Recordings",
+                            "tooltip": "",
+                            "cvar": "ds_autodelete"
+                        }
+                    ]
                 }
             ]
         },
@@ -165,7 +469,9 @@
                             "type": "select",
                             "label": "Display Mode",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "waitForApply": true,
+                            "cvar": "videomode",
                             "options": [
                                 { "label": "Exclusive Fullscreen", "value": "0" },
                                 { "label": "Windowed", "value": "1" },
@@ -176,7 +482,9 @@
                             "type": "select",
                             "label": "Aspect Ratio",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "waitForApply": true,
+                            "cvar": "videomode",
                             "options": [
                                 { "label": "4:3", "value": "0" },
                                 { "label": "16:10", "value": "1" },
@@ -189,33 +497,35 @@
                             "type": "select",
                             "label": "Size",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "waitForApply": true,
+                            "cvar": "videomode",
                             "options": [
                                 { "label": "Use Native Resolution", "value": "0" }
                             ]
                         },
                         {
+                            "type": "button",
+                            "label": "Apply Display Settings",
+                            "tooltip": "",
+                            "needsSetting": true,
+                            "waitForApply": true,
+                            "cvar": "videomode"
+                        },
+                        {
                             "type": "check",
                             "label": "V-Sync",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
                             "cvar": "mat_vsync"
                         },
                         {
                             "type": "slider",
                             "label": "Maximum frames per second allowed",
                             "tooltip": "",
-                            "cvar": "fps_max_game",
+                            "cvar": "fps_max",
                             "min": 60,
                             "max": 1000
-                        },
-                        {
-                            "type": "slider",
-                            "label": "Main menu maximum frames per second allowed",
-                            "tooltip": "",
-                            "cvar": "fps_max_ui",
-                            "min": 60,
-                            "max": 240
                         }
                     ]
                 },
@@ -245,8 +555,8 @@
                             "type": "select",
                             "label": "Graphics Preset",
                             "tooltip": "",
-                            "needsCallback": true,
-                            "id": "graphics-preset",
+                            "needsSetting": true,
+                            "cvar": "preset",
                             "options": [
                                 { "label": "Performance Mode", "value": "0" },
                                 { "label": "Low", "value": "1" },
@@ -260,8 +570,8 @@
                             "type": "select",
                             "label": "Shadows",
                             "tooltip": "",
-                            "needsCallback": true,
-                            "id": "shadows",
+                            "needsSetting": true,
+                            "cvar": "shadows",
                             "options": [
                                 { "label": "Off", "value": "0" },
                                 { "label": "Low", "value": "1" },
@@ -274,7 +584,8 @@
                             "type": "select",
                             "label": "Lighting",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "cvar": "lighting",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -298,7 +609,7 @@
                             "type": "select",
                             "label": "Model Quality",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "cvar": "r_rootlod",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -310,7 +621,8 @@
                             "type": "select",
                             "label": "Effects",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "cvar": "effects",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -322,7 +634,8 @@
                             "type": "select",
                             "label": "Post Processing",
                             "tooltip": "",
-                            "needsCallback": true,
+                            "needsSetting": true,
+                            "cvar": "postprocess",
                             "options": [
                                 { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
@@ -355,9 +668,10 @@
                             "type": "slider",
                             "label": "Main",
                             "tooltip": "",
-                            "cvar": "snd_mastervolume",
+                            "cvar": "volume",
                             "min": 0,
-                            "max": 1
+                            "max": 1,
+                            "step": 0.01
                         },
                         {
                             "type": "slider",
@@ -365,7 +679,49 @@
                             "tooltip": "",
                             "cvar": "snd_musicvolume",
                             "min": 0,
-                            "max": 1
+                            "max": 1,
+                            "step": 0.01
+                        }
+                    ]
+                },
+                {
+                    "name": "Output",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Speaker Configuration",
+                            "tooltip": "",
+                            "cvar": "snd_surround_speakers",
+                            "options": [
+                                { "label": "Headphones", "value": "0" },
+                                { "label": "2 Speakers", "value": "2" },
+                                { "label": "4 Speakers", "value": "4" },
+                                { "label": "5.1 Speakers", "value": "5" },
+                                { "label": "7.1 Speakers", "value": "6" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Options",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Sound Quality",
+                            "tooltip": "",
+                            "needsSetting": true,
+                            "cvar": "sound",
+                            "options": [
+                                { "label": "Low", "value": "0" },
+                                { "label": "Medium", "value": "1" },
+                                { "label": "High", "value": "2" }
+                            ]
+                        },
+                        {
+                            "type": "check",
+                            "label": "Silence Sound in Desktop",
+                            "tooltip": "",
+                            "cvar": "snd_mute_losefocus"
                         }
                     ]
                 }
@@ -382,7 +738,7 @@
                             "label": "Mouse Sensitivity",
                             "tooltip": "",
                             "cvar": "sensitivity",
-                            "min": 0,
+                            "min": 0.1,
                             "max": 6,
                             "step": 0.01
                         },
@@ -390,6 +746,7 @@
                             "type": "check",
                             "label": "Invert Mouse Y-Axis",
                             "tooltip": "",
+                            "mode": "negate",
                             "cvar": "m_pitch"
                         },
                         {
@@ -402,7 +759,10 @@
                             "type": "slider",
                             "label": "Mouse Acceleration",
                             "tooltip": "",
-                            "cvar": "m_customaccel_exponent"
+                            "cvar": "m_customaccel_exponent",
+                            "min": 1,
+                            "max": 1.4,
+                            "step": 0.01
                         }
                     ]
                 },
