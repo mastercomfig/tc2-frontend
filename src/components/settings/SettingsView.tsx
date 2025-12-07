@@ -18,9 +18,9 @@ export function SettingsView() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <div className="SettingsView-background p-8 rounded-lg shadow-lg mx-auto">
+    <div className="SettingsView-background p-8 rounded-lg shadow-lg mx-auto dark">
       <h1 className="text-5xl text-center SettingsView-main-title mb-4">Options</h1>
-      <TabGroup className="flex flex-col flex-1" onChange={(index) => setSelectedIndex(index)}>
+      <TabGroup className="flex flex-col flex-1 h-0" onChange={(index) => setSelectedIndex(index)}>
         <TabList className="flex justify-center space-x-4 tf2-bold text-2xl">
           {tabs.map((tab, index) => (
             <Tab
@@ -36,7 +36,7 @@ export function SettingsView() {
             </Tab>
           ))}
         </TabList>
-        <TabPanels className="flex-1">
+        <TabPanels className="flex-1 h-0">
           {settingsData.categories.map((category) => (
             <TabPanel key={category.name} className="mt-6 h-full">
               <SettingsCategory key={category.name} category={category} />

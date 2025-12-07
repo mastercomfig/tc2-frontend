@@ -9,19 +9,19 @@
                         {
                             "type": "check",
                             "label": "Fast Weapon Switch",
-                            "tooltip": "",
+                            "tooltip": "If set, you can change weapons without using the weapon selection menu.",
                             "cvar": "hud_fastswitch"
                         },
                         {
                             "type": "check",
                             "label": "Enable Minimal HUD",
-                            "tooltip": "",
+                            "tooltip": "Minimal HUD mode uses a smaller, denser HUD so that you can see more. Some explanatory information is removed as well, so you should be familiar with the standard HUD before you turn on Minimal HUD.",
                             "cvar": "cl_hud_minmode"
                         },
                         {
                             "type": "select",
                             "label": "HUD Aspect Ratio",
-                            "tooltip": "",
+                            "tooltip": "Will constrain certain elements of the HUD to fit to the center of the screen based upon the aspect ratio chosen.",
                             "cvar": "cl_hud_aspect",
                             "options": [
                                 { "label": "Default Centered (4:3)", "value": "1" },
@@ -34,19 +34,19 @@
                         {
                             "type": "check",
                             "label": "Hide HUD During Freezecam Screenshots",
-                            "tooltip": "",
+                            "tooltip": "If set, the HUD will be hidden during freezecam screenshots.",
                             "cvar": "hud_freezecamhide"
                         },
                         {
                             "type": "check",
                             "label": "Disable Floating Health Bar",
-                            "tooltip": "",
+                            "tooltip": "If set, removes the TargetID HealthBar floating over the character's head.",
                             "cvar": "tf_hud_target_id_disable_floating_health"
                         },
                         {
-                            "type": "check",
-                            "label": "Target ID Transparency",
-                            "tooltip": "",
+                            "type": "slider",
+                            "label": "TargetID Translucency",
+                            "tooltip": "Set the translucency of the TargetID name plate",
                             "cvar": "tf_hud_target_id_alpha",
                             "min": 0,
                             "max": 255,
@@ -84,7 +84,7 @@
                         {
                             "type": "check",
                             "label": "Disable HTML MOTDs",
-                            "tooltip": "",
+                            "tooltip": "If set, you won't be shown HTML versions of server's Message of the Day welcome screens.",
                             "cvar": "cl_disablehtmlmotd"
                         }
                     ]
@@ -99,13 +99,13 @@
                         {
                             "type": "check",
                             "label": "Enable Hitsounds",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll hear a 'hit sound' that's played whenever you damage an enemy.",
                             "cvar": "tf_dingalingaling"
                         },
                         {
                             "type": "slider",
                             "label": "Hitsound Volume",
-                            "tooltip": "",
+                            "tooltip": "The volume for 'hit sounds'.",
                             "cvar": "tf_dingaling_volume",
                             "min": 0,
                             "max": 1,
@@ -131,7 +131,7 @@
                         {
                             "type": "slider",
                             "label": "Hitsound Pitch Min Damage",
-                            "tooltip": "",
+                            "tooltip": "Hit sound pitch for attacks that deal 10 damage or less. Pitch scales between high and low values. (Recommended: 155)",
                             "cvar": "tf_dingaling_pitchmindmg",
                             "min": 1,
                             "max": 255,
@@ -140,7 +140,7 @@
                         {
                             "type": "slider",
                             "label": "Hitsound Pitch Max Damage",
-                            "tooltip": "",
+                            "tooltip": "Hit sound pitch for attacks that deal 150 damage or more. Pitch scales between high and low values. (Recommended: 50)",
                             "cvar": "tf_dingaling_pitchmaxdmg",
                             "min": 1,
                             "max": 255,
@@ -148,18 +148,18 @@
                         },
                         {
                             "type": "header",
-                            "label": "Killsound"
+                            "label": "Killsounds"
                         },
                         {
                             "type": "check",
                             "label": "Enable Killsounds",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll hear a last hit sound when one of your attacks kills an enemy.",
                             "cvar": "tf_dingalingaling_lasthit"
                         },
                         {
                             "type": "slider",
                             "label": "Killsound Volume",
-                            "tooltip": "",
+                            "tooltip": "The volume for last hit sounds.",
                             "cvar": "tf_dingaling_lasthit_volume",
                             "min": 0,
                             "max": 1,
@@ -185,7 +185,7 @@
                         {
                             "type": "slider",
                             "label": "Killsound Pitch Min Damage",
-                            "tooltip": "",
+                            "tooltip": "Kill sound pitch for last hits that deal 10 damage or less. Pitch scales between high and low values. (Recommended: 155)",
                             "cvar": "tf_dingaling_lasthit_pitchmindmg",
                             "min": 1,
                             "max": 255,
@@ -194,7 +194,7 @@
                         {
                             "type": "slider",
                             "label": "Killsound Pitch Max Damage",
-                            "tooltip": "",
+                            "tooltip": "Kill sound pitch for last hits that deal 150 damage or more. Pitch scales between high and low values. (Recommended: 50)",
                             "cvar": "tf_dingaling_lasthit_pitchmaxdmg",
                             "min": 1,
                             "max": 255,
@@ -208,19 +208,19 @@
                         {
                             "type": "check",
                             "label": "Enable Hitmarker",
-                            "tooltip": "",
+                            "tooltip": "Display a hitmarker on your crosshair upon dealing damage or killing an enemy.",
                             "cvar": "cl_hitmarker"
                         },
                         {
                             "type": "check",
                             "label": "Enable Damage Numbers",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll see damage amounts appear over the heads of enemies whenever you damage them.",
                             "cvar": "hud_combattext"
                         },
                         {
                             "type": "check",
                             "label": "Large Damage Numbers",
-                            "tooltip": "",
+                            "tooltip": "Whether to always increase the size of the damage numbers, or just upon a critical hit.",
                             "cvar": "hud_combattext_large"
                         }
                     ]
@@ -231,7 +231,7 @@
                         {
                             "type": "slider",
                             "label": "Viewmodel Field of View",
-                            "tooltip": "",
+                            "tooltip": "The Field-of-View to use when drawing the first person view of your active weapon. Larger values will make the weapon smaller onscreen.",
                             "cvar": "viewmodel_fov",
                             "min": 54,
                             "max": 70,
@@ -240,13 +240,13 @@
                         {
                             "type": "check",
                             "label": "Flip Viewmodels",
-                            "tooltip": "",
+                            "tooltip": "If set, the first person view of your active weapon will be drawn on the left hand side of the screen, instead of the right.",
                             "cvar": "cl_flipviewmodels"
                         },
                         {
                             "type": "check",
                             "label": "Use Minimized Viewmodels",
-                            "tooltip": "",
+                            "tooltip": "If set, the first person view of your active weapon will be drawn using minimal screen space.",
                             "cvar": "tf_use_min_viewmodels"
                         }
                     ]
@@ -257,25 +257,25 @@
                         {
                             "type": "check",
                             "label": "Auto-Kill After Choosing a Player Class",
-                            "tooltip": "",
+                            "tooltip": "If set, then you'll immediately die whenever you change class while out in the field. If unset, you'll change to your new class the next time you respawn or touch a resupply cabinet.",
                             "cvar": "hud_classautokill"
                         },
                         {
                             "type": "check",
                             "label": "Auto-Respawn After Loadout Changes in Respawn Rooms",
-                            "tooltip": "",
+                            "tooltip": "If set, then you'll respawn immediately whenever you change your loadout while inside a respawn zone. If unset, your loadout changes will take effect the next time you respawn or touch a resupply cabinet.",
                             "cvar": "tf_respawn_on_loadoutchanges"
                         },
                         {
                             "type": "check",
                             "label": "Remember the Active Weapon Between Lives",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll respawn holding the same weapon you were holding when you died (assuming you still have it equipped in your loadout).",
                             "cvar": "tf_remember_activeweapon"
                         },
                         {
                             "type": "check",
                             "label": "Remember the 'Previous Weapon' Between Lives",
-                            "tooltip": "",
+                            "tooltip": "If set, respawning won't affect the weapon you'll switch to when you hit your 'previous weapon' key. If unset, your 'previous weapon' will always be set to be your secondary weapon when you respawn.",
                             "cvar": "tf_remember_lastweapon"
                         }
                     ]
@@ -287,12 +287,13 @@
                         {
                             "type": "check",
                             "label": "Medigun continues healing without holding down fire button",
-                            "tooltip": "tf_medigun_autoheal"
+                            "tooltip": "If set, your Medic's medigun will stay locked onto your heal target until you press the fire button again. If unset, you'll be required to hold the button down to keep the medigun locked on.",
+                            "cvar": "tf_medigun_autoheal"
                         },
                         {
                             "type": "check",
                             "label": "Display a Marker Over The Player You Are Healing",
-                            "tooltip": "",
+                            "tooltip": "If set, a marker will be displayed above the friendly target that you're currently healing with your medigun.",
                             "cvar": "hud_medichealtargetmarker"
                         },
                         {
@@ -302,13 +303,13 @@
                         {
                             "type": "check",
                             "label": "Enable injured teammate indicator",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll receive an automatic request for assistance from any nearby teammates when their health falls below a threshold.",
                             "cvar": "hud_medicautocallers"
                         },
                         {
                             "type": "slider",
                             "label": "Injured teammate health percentage",
-                            "tooltip": "",
+                            "tooltip": "The threshold at which your teammates will automatically request assistance.",
                             "cvar": "hud_medicautocallersthreshold",
                             "min": 10,
                             "max": 100,
@@ -329,24 +330,24 @@
                         {
                             "type": "check",
                             "label": "Play a Sound When the Sniper Rifle is Fully Charged",
-                            "tooltip": "",
+                            "tooltip": "If set, the Sniper rifle will automatically play a sound when fully charged.",
                             "cvar": "tf_sniper_fullcharge_bell"
                         },
                         {
                             "type": "select",
                             "label": "Sniper Rifle Zoom Behavior",
-                            "tooltip": "",
+                            "tooltip": "Control how the sniper rifle zoom functions.",
                             "cvar": "cl_autorezoom",
                             "options": [
-                                { "label": "Toggle Zoom", "value": "1" },
-                                { "label": "Auto Re-Zoom", "value": "1" },
-                                { "label": "Hold to Zoom", "value": "0" }
+                                { "label": "Toggle Zoom", "value": "0", "tooltip": "Toggle zooming upon a press of the zoom key." },
+                                { "label": "Auto Re-Zoom", "value": "1", "tooltip": "Automatically re-zoom after firing." },
+                                { "label": "Hold to Zoom", "value": "2", "tooltip": "Hold the zoom key to maintain zooming. Will maintain a zoom between shots if held." }
                             ]
                         },
                         {
                             "type": "check",
                             "label": "Hide Crosshair When Zoomed In",
-                            "tooltip": "",
+                            "tooltip": "If set, when zoomed in with any sniper rifles, the default and custom crosshairs will automatically disappear leaving only the rifle targeting laser.",
                             "cvar": "tf_hud_no_crosshair_on_scope_zoom"
                         }
                     ]
@@ -358,13 +359,13 @@
                         {
                             "type": "check",
                             "label": "Concise Disguise Menu",
-                            "tooltip": "",
+                            "tooltip": "The Concise Disguise Menu for the Spy is an alternate menu that requires more keypresses in the disguising process, but only uses the number keys 1 through 4.",
                             "cvar": "tf_simple_disguise_menu"
                         },
                         {
                             "type": "check",
                             "label": "Show Revolver Accuracy",
-                            "tooltip": "",
+                            "tooltip": "Whether to adjust the size of the crosshair when your revolver cannot headshot / is not perfectly accurate.",
                             "cvar": "tf_revolver_dynamic_crosshair"
                         }
                     ]
@@ -375,18 +376,18 @@
                         {
                             "type": "check",
                             "label": "Show Non-Standard Items on Spectated Player",
-                            "tooltip": "",
+                            "tooltip": "If set, you'll be shown the loadout items being used by the player you're spectating.",
                             "cvar": "cl_spec_carrieditems"
                         },
                         {
                             "type": "check",
                             "label": "Use Advanced Spectator HUD in Tournament Mode",
-                            "tooltip": "",
+                            "tooltip": "The Advanced Spectator HUD is used in tournament mode only, and is designed to show you more information in 6 v 6 matches.",
                             "cvar": "cl_use_tournament_specgui"
                         },
                         {
                             "type": "select",
-                            "label": "Spectator Target ID Location",
+                            "label": "Spectator TargetID Location",
                             "tooltip": "",
                             "cvar": "tf_spectator_target_location",
                             "options": [
@@ -399,7 +400,7 @@
                         {
                             "type": "check",
                             "label": "When Spectating, View World From the Eyes of a Pyro",
-                            "tooltip": "",
+                            "tooltip": "If set, world will be viewed under Pyrovision when spectating",
                             "cvar": "tf_spectate_pyrovision"
                         }
                     ]
@@ -413,23 +414,23 @@
                             "tooltip": "",
                             "cvar": "ds_enable",
                             "options": [
-                                { "label": "Manual", "value": "0" },
-                                { "label": "Auto-Record Matchmaking Matches", "value": "1" },
-                                { "label": "Auto-Record All Matches", "value": "2" },
-                                { "label": "Auto-Record Tournament Matches", "value": "3" },
-                                { "label": "Auto-Record Competitive Matches", "value": "4" }
+                                { "label": "Manual", "value": "0", "tooltip": "Recordings can be started/stopped using the ds_record/ds_stop commands." },
+                                { "label": "Auto-Record Matchmaking Matches", "value": "1", "tooltip": "Gameplay will be recorded when on an official matchmaking server." },
+                                { "label": "Auto-Record All Matches", "value": "2", "tooltip": "All gameplay will be recorded on any server." },
+                                { "label": "Auto-Record Tournament Matches", "value": "3", "tooltip": "Record when the server is using mp_tournament." },
+                                { "label": "Auto-Record Competitive Matches", "value": "4", "tooltip": "Gameplay will be recorded on official or community competitive servers." }
                             ]
                         },
                         {
                             "type": "check",
                             "label": "Play Sounds For Start/Stop Events",
-                            "tooltip": "",
+                            "tooltip": "If set, sounds will play when demo recording starts or stops",
                             "cvar": "ds_sound"
                         },
                         {
                             "type": "check",
                             "label": "Log Events",
-                            "tooltip": "",
+                            "tooltip": "If set, all events are logged to the general _events.txt file and to a specific .json file that contains the events for each associated .dem file",
                             "cvar": "ds_log"
                         },
                         {
@@ -452,7 +453,7 @@
                         {
                             "type": "check",
                             "label": "Auto-Delete Recordings",
-                            "tooltip": "",
+                            "tooltip": "Auto-delete recordings with no associated bookmark or kill streak events",
                             "cvar": "ds_autodelete"
                         }
                     ]
@@ -799,13 +800,13 @@
                         {
                             "type": "check",
                             "label": "Enable text chat",
-                            "tooltip": "",
+                            "tooltip": "If set, allow in-game text communication",
                             "cvar": "cl_enable_text_chat"
                         },
                         {
                             "type": "button",
                             "label": "Text Filter Settings",
-                            "tooltip": "",
+                            "tooltip": "Open Steam chat and text filter settings",
                             "cvar": "open_chat_filter_settings"
                         }
                     ]
@@ -816,7 +817,7 @@
                         {
                             "type": "check",
                             "label": "Enable voice chat",
-                            "tooltip": "",
+                            "tooltip": "If set, allow in-game voice communication",
                             "cvar": "voice_modenable"
                         }
                     ]

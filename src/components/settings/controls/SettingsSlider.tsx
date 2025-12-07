@@ -22,7 +22,7 @@ export function SettingsSlider({ setting }) {
       <label className="mb-2 text-white tf2-light text-xl">
         {setting.label}
       </label>
-      <div className="flex flex-row justify-between items-center w-2/5">
+      <div className="flex flex-row justify-between items-center w-3/5">
         <input
           className="me-4 flex-1"
           type="range"

@@ -30,9 +30,9 @@ export function SettingsCategory({ category }) {
           </Tab>
         ))}
       </TabList>
-      <TabPanels className="h-full flex-4">
+      <TabPanels className="flex-4 h-full">
         {category.groups.map((group) => (
-          <TabPanel key={group.name}>
+          <TabPanel key={group.name} className="h-full">
             <SettingsGroup key={group.name} group={group} />
           </TabPanel>
         ))}
