@@ -1,5 +1,5 @@
-import { Do } from "./do";
+import { runRpc } from "./ws";
 
 export function playSound(sound: string) {
-    Do("playsound?" + sound);
+    runRpc("playsound", sound);
 }

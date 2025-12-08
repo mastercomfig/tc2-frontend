@@ -9,7 +9,7 @@ export function SettingsGroup({ group }) {
       <div className="SettingsView-group">
         {group.settings.map((setting) => (
           <SettingsItem
-            key={setting.id}
+            key={setting.cvar}
             setting={setting}
             setTooltip={setTooltip}
           />

@@ -86,6 +86,12 @@
                             "label": "Disable HTML MOTDs",
                             "tooltip": "If set, you won't be shown HTML versions of server's Message of the Day welcome screens.",
                             "cvar": "cl_disablehtmlmotd"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Show Pop-up Alerts While In-Game",
+                            "tooltip": "If set, you'll receive in-game notification popups for various events, like trade requests. If unset, these notifications will only be visible when you return to the main menu.",
+                            "cvar": "cl_notifications_show_ingame"
                         }
                     ]
                 },
@@ -218,10 +224,130 @@
                             "cvar": "hud_combattext"
                         },
                         {
+                            "type": "select",
+                            "label": "Combine Damage Numbers",
+                            "tooltip": "Controls how damage numbers are combined when multiple hits are made in quick succession.",
+                            "cvar": "hud_combattext_batching",
+                            "options": [
+                                { "label": "Individual", "value": "0", "tooltip": "Each damage number is shown separately." },
+                                { "label": "Combined", "value": "2", "tooltip": "Damage numbers are combined into a single number." },
+                                { "label": "Individual+Combined", "value": "1", "tooltip": "Each damage number is shown separately and added into a combined number." }
+                            ]
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Damage Number Combine Time",
+                            "tooltip": "The time window (in seconds) during which multiple damage numbers will be combined into a single number.",
+                            "cvar": "hud_combattext_batching_window",
+                            "min": 0.1,
+                            "max": 1.0,
+                            "step": 0.05
+                        },
+                        {
                             "type": "check",
                             "label": "Large Damage Numbers",
                             "tooltip": "Whether to always increase the size of the damage numbers, or just upon a critical hit.",
                             "cvar": "hud_combattext_large"
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Damage Number Red",
+                            "tooltip": "Change the color of text that appears over your target's head.",
+                            "cvar": "hud_combattext_red",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Damage Number Green",
+                            "tooltip": "Change the color of text that appears over your target's head.",
+                            "cvar": "hud_combattext_green",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Damage Number Blue",
+                            "tooltip": "Change the color of text that appears over your target's head.",
+                            "cvar": "hud_combattext_blue",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable Healing Numbers",
+                            "tooltip": "Shows health restored over heal targets similarly to damage numbers.",
+                            "cvar": "hud_combattext_healing"
+                        }
+                    ]
+                },
+                {
+                    "name": "Crosshairs",
+                    "settings": [
+                        {
+                            "type": "select",
+                            "label": "Crosshair Style",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_file",
+                            "options": [
+                                { "label": "Per Weapon", "value": "" },
+                                { "label": "Crosshair Dot", "value": "crosshair1" },
+                                { "label": "Half Crosshair Dot", "value": "crosshair2" },
+                                { "label": "Circle", "value": "crosshair3" },
+                                { "label": "X", "value": "crosshair4" },
+                                { "label": "Dot", "value": "crosshair5" },
+                                { "label": "Crosshair No Dot", "value": "crosshair6" },
+                                { "label": "Plus", "value": "crosshair7" },
+                                { "label": "Brackets", "value": "default" }
+                            ]
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Crosshair Scale",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_scale",
+                            "min": 16,
+                            "max": 48,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Crosshair Red",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_red",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Crosshair Green",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_green",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Crosshair Blue",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_blue",
+                            "min": 0,
+                            "max": 255,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Crosshair Gap",
+                            "tooltip": "",
+                            "cvar": "cl_crosshair_gap",
+                            "min": 0,
+                            "max": 20,
+                            "step": 1
                         }
                     ]
                 },
@@ -451,6 +577,24 @@
                             "cvar": "ds_screens"
                         },
                         {
+                            "type": "slider",
+                            "label": "Min Killstreak Count",
+                            "tooltip": "This is the minimum killstreak count before the killstreaks are logged. 0 to disable killstreak logging.",
+                            "cvar": "ds_min_streak",
+                            "min": 0,
+                            "max": 30,
+                            "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Max Time Between Kills",
+                            "tooltip": "This is the maximum time between kills before the killstreak count is reset to zero.",
+                            "cvar": "ds_kill_delay",
+                            "min": 5,
+                            "max": 1000,
+                            "step": 1
+                        },
+                        {
                             "type": "check",
                             "label": "Auto-Delete Recordings",
                             "tooltip": "Auto-delete recordings with no associated bookmark or kill streak events",
@@ -491,6 +635,18 @@
                         },
                         {
                             "type": "select",
+                            "label": "Custom Files",
+                            "tooltip": "When a game server tries to download custom content to your computer, you can control what files to allow to download.",
+                            "cvar": "cl_downloadfilter",
+                            "options": [
+                                { "label": "Allow all custom files from server", "value": "all" },
+                                { "label": "Do not download custom sounds", "value": "nosounds" },
+                                { "label": "Only allow map files", "value": "mapsonly" },
+                                { "label": "Do not download any custom files", "value": "none" }
+                            ]
+                        },
+                        {
+                            "type": "select",
                             "label": "Show Network Information",
                             "tooltip": "If set, network performance information such as ping and packet loss will be displayed on the HUD.",
                             "cvar": "net_graph",
@@ -514,9 +670,7 @@
                             "type": "select",
                             "label": "Display Mode",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "waitForApply": true,
-                            "cvar": "videomode",
+                            "cvar": "videomode_mode",
                             "options": [
                                 { "label": "Exclusive Fullscreen", "value": "0" },
                                 { "label": "Windowed", "value": "1" },
@@ -525,26 +679,9 @@
                         },
                         {
                             "type": "select",
-                            "label": "Aspect Ratio",
+                            "label": "Display Size",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "waitForApply": true,
-                            "cvar": "videomode",
-                            "options": [
-                                { "label": "4:3", "value": "0" },
-                                { "label": "16:10", "value": "1" },
-                                { "label": "16:9", "value": "2" },
-                                { "label": "21:9", "value": "3" },
-                                { "label": "All", "value": "4" }
-                            ]
-                        },
-                        {
-                            "type": "select",
-                            "label": "Size",
-                            "tooltip": "",
-                            "needsSetting": true,
-                            "waitForApply": true,
-                            "cvar": "videomode",
+                            "cvar": "videomode_size",
                             "options": [
                                 { "label": "Use Native Resolution", "value": "0" }
                             ]
@@ -553,15 +690,12 @@
                             "type": "button",
                             "label": "Apply Display Settings",
                             "tooltip": "",
-                            "needsSetting": true,
-                            "waitForApply": true,
                             "cvar": "videomode"
                         },
                         {
                             "type": "check",
                             "label": "V-Sync",
                             "tooltip": "",
-                            "needsSetting": true,
                             "cvar": "mat_vsync"
                         },
                         {
@@ -570,7 +704,8 @@
                             "tooltip": "",
                             "cvar": "fps_max",
                             "min": 60,
-                            "max": 1000
+                            "max": 1000,
+                            "step": 1
                         }
                     ]
                 },
@@ -582,8 +717,10 @@
                             "label": "Brightness",
                             "tooltip": "",
                             "cvar": "mat_monitorgamma",
-                            "min": 0.5,
-                            "max": 1.5
+                            "min": 1.6,
+                            "max": 2.6,
+                            "step": 0.05,
+                            "mode": "gamma"
                         },
                         {
                             "type": "slider",
@@ -660,10 +797,9 @@
                             "tooltip": "",
                             "cvar": "r_rootlod",
                             "options": [
-                                { "label": "Low", "value": "0" },
+                                { "label": "Low", "value": "2" },
                                 { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" },
-                                { "label": "Ultra", "value": "3" }
+                                { "label": "High", "value": "0" }
                             ]
                         },
                         {
@@ -764,6 +900,15 @@
                             "min": 0,
                             "max": 1,
                             "step": 0.01
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Voice Receive Volume",
+                            "tooltip": "Adjust the volume of other players' voices.",
+                            "cvar": "voice_scale",
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
                         }
                     ]
                 },
@@ -801,9 +946,21 @@
                         },
                         {
                             "type": "check",
+                            "label": "Enable 3D Sound",
+                            "tooltip": "If set, enables 3D stereo spatial effects. Recommended for headphones only.",
+                            "cvar": "dsp_enhance_stereo"
+                        },
+                        {
+                            "type": "check",
+                            "label": "Enable enhanced audio effects",
+                            "tooltip": "If set, enables enhanced audio effects based upon the size and type of the in-game environment you are standing in.",
+                            "cvar": "dsp_room"
+                        },
+                        {
+                            "type": "check",
                             "label": "Play Sound in Desktop",
                             "tooltip": "Play sound even when the game is in the background",
-                            "mode": "negate",
+                            "mode": "flip",
                             "cvar": "snd_mute_losefocus"
                         }
                     ]
@@ -856,7 +1013,7 @@
                             "type": "button",
                             "label": "Edit Keybindings",
                             "tooltip": "",
-                            "cvar": "open_keybindings_menu"
+                            "cvar": "OpenOptionsDialog"
                         }
                     ]
                 },

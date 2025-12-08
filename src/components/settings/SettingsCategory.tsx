@@ -1,19 +1,25 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { SettingsGroup } from "./SettingsGroup";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+
+import useTabsStore from "@/store/tabs";
 
 function classNames(...classes: string[]) {
   return classes.join(" ");
 }
 
 export function SettingsCategory({ category }) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const groupNames = category.groups.map((group) => group.name);
+
+  const tabsStore = useTabsStore((state) => state);
+
+  const selectedIndex = tabsStore.getGroupSelectedTab(category.name) || 0;
 
   return (
     <TabGroup
       className="SettingsView-category-view"
-      onChange={(index) => setSelectedIndex(index)}
+      selectedIndex={selectedIndex}
+      onChange={(index) => tabsStore.setGroupSelectedTab(category.name, index)}
     >
       <TabList className="flex flex-col space-y-4 border-e pe-2 me-4 tf2-light SettingsView-category-sidebar flex-1">
         {groupNames.map((groupName, index) => (

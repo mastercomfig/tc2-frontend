@@ -3,8 +3,10 @@ import { useMiniSearch } from "react-minisearch";
 import settings from "@/data/settings.json";
 import { useEffect, useMemo } from "react";
 
+import useTabsStore from "@/store/tabs";
+
 const searchOptions = {
-  fields: ["label", "tooltip", "categoryName", "groupName"],
+  fields: ["label", "tooltip", "categoryName", "group"],
   storeFields: ["label", "category", "group"],
   searchOptions: {
     boost: {
@@ -39,15 +41,17 @@ export function SettingsSearch({ setSelectedGroup }) {
     return options;
   }, []);
 
+  const tabsStore = useTabsStore((state) => state);
+
   const { search, searchResults } = useMiniSearch(searchableSettings, searchOptions);
 
   useEffect(() => {
     if (!searchResults || searchResults.length === 0) {
       return;
     }
-    console.log("Search results:", searchResults);
     const firstResult = searchResults[0];
     setSelectedGroup(firstResult.category);
+    tabsStore.setGroupSelectedTab(firstResult.categoryName, firstResult.group);
   }, [searchResults]);
 
   return (

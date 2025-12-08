@@ -1,4 +1,7 @@
-const ws = new WebSocket(`ws://${window.location.host}/ws`);
+const host =
+  window.location.port === "4321" ? "127.0.0.1:58270" : window.location.host;
+
+const ws = new WebSocket(`ws://${host}/ws`);
 
 const msgQueue: Array<Record<string, any>> = [];
 
@@ -19,14 +22,14 @@ function sendMessage(message: Record<string, any>) {
   }
 }
 
-let rpcCounter = 0;
+let rpcCounter = 1;
 
-export function runRpc(
+function runRpcInner(
+  rpcId: number,
   method: string,
   params: string | null = null,
 ): Promise<string | null> {
   return new Promise((resolve, reject) => {
-    const rpcId = rpcCounter++;
     const listener = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
       if (data.i === rpcId) {
@@ -41,4 +44,37 @@ export function runRpc(
       sendMessage({ i: rpcId, m: method, p: params });
     }
   });
+}
+
+export function runRpc(
+  method: string,
+  params: string | null = null,
+): Promise<string | null> {
+  return runRpcInner(rpcCounter++, method, params);
+}
+
+export function disconnect() {
+  runRpcInner(0, "disconnect").then(() => {
+    ws.close();
+  });
+}
+
+export function listenRemote(
+  event: string,
+  callback: (data: string | undefined) => void,
+) {
+  const handler = (msgEvent: MessageEvent) => {
+    const data = JSON.parse(msgEvent.data);
+    console.log("Received remote event:", data.e, msgEvent.data);
+    if (data.e === event) {
+      callback(data.d);
+    }
+  };
+  console.log("Listening to remote event:", event);
+  ws.addEventListener("message", handler);
+  return handler;
+}
+
+export function unlistenRemote(handler: (msgEvent: MessageEvent) => void) {
+  ws.removeEventListener("message", handler);
 }

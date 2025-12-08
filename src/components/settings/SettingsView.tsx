@@ -1,9 +1,11 @@
 import settings from "@/data/settings.json";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SettingsView.css"
 import { SettingsCategory } from "./SettingsCategory";
 import { SettingsSearch } from "./SettingsSearch";
+import { runRpc } from "@/util/ws";
+import useSettingsStore, { parseViewModes, ViewModeState } from "@/store/settings";
 
 type SettingsData = typeof settings;
 const settingsData = settings as SettingsData;
@@ -13,15 +15,35 @@ function classNames(...classes: string[]) {
   return classes.join(" ");
 }
 
-<style></style>
-
 export function SettingsView() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const settingsStore = useSettingsStore((state) => state);
+
+  useEffect(() => {
+    runRpc("getmodes").then((modes) => {
+      if (modes) {
+        const viewModes = parseViewModes(modes);
+        viewModes.reverse(); // Reverse to have higher resolutions first
+        settingsStore.setAvailableViewModes(viewModes);
+      }
+    });
+    runRpc("getmode").then((mode) => {
+      if (mode) {
+        const parts = mode.split(" ");
+        const width = parseInt(parts[0]);
+        const height = parseInt(parts[1]);
+        const windowmode = parseInt(parts[2]);
+        const borderless = parseInt(parts[3]);
+        settingsStore.setCurrentMode(new ViewModeState(windowmode, borderless, width, height));
+      }
+    });
+  }, []);
 
   return (
     <div className="SettingsView-background p-8 rounded-lg shadow-lg mx-auto dark">
       <h1 className="text-5xl text-center SettingsView-main-title mb-2">Options</h1>
-      <SettingsSearch setSelectedGroup={setSelectedIndex} />
+      {false && <SettingsSearch setSelectedGroup={setSelectedIndex} />}
       <TabGroup className="flex flex-col flex-1 h-0" selectedIndex={selectedIndex} onChange={(index) => setSelectedIndex(index)}>
         <TabList className="flex justify-center space-x-4 tf2-bold text-2xl">
           {tabs.map((tab, index) => (
