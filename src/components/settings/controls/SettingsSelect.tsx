@@ -90,6 +90,8 @@ export function SettingsSelect({ setting }) {
       const iVal = parseInt(val);
       settingsStore.setPendingModeField("width", settingsStore.availableViewModes[iVal].width);
       settingsStore.setPendingModeField("height", settingsStore.availableViewModes[iVal].height);
+    } else if (setting.valueType === "string") {
+      runRpc("cmd", `${setting.cvar} ${val}`);
     } else {
       runRpc("setcvar", `${setting.cvar} ${val}`);
     }

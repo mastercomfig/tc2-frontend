@@ -292,6 +292,7 @@
                             "label": "Crosshair Style",
                             "tooltip": "",
                             "cvar": "cl_crosshair_file",
+                            "valueType": "string",
                             "options": [
                                 { "label": "Per Weapon", "value": "" },
                                 { "label": "Crosshair Dot", "value": "crosshair1" },
@@ -638,6 +639,7 @@
                             "label": "Custom Files",
                             "tooltip": "When a game server tries to download custom content to your computer, you can control what files to allow to download.",
                             "cvar": "cl_downloadfilter",
+                            "valueType": "string",
                             "options": [
                                 { "label": "Allow all custom files from server", "value": "all" },
                                 { "label": "Do not download custom sounds", "value": "nosounds" },
