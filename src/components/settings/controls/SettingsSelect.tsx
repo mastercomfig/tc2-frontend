@@ -91,7 +91,7 @@ export function SettingsSelect({ setting }) {
       settingsStore.setPendingModeField("width", settingsStore.availableViewModes[iVal].width);
       settingsStore.setPendingModeField("height", settingsStore.availableViewModes[iVal].height);
     } else if (setting.valueType === "string") {
-      runRpc("cmd", `${setting.cvar} ${val}`);
+      runRpc("cmd", `${setting.cvar} "${val}"`);
     } else {
       runRpc("setcvar", `${setting.cvar} ${val}`);
     }
