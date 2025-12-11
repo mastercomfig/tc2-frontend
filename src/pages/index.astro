@@ -333,6 +333,8 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
         if (activePage) {
           const page = document.querySelector(`[data-page='${activePage}']`);
           page.style.display = "none";
+        } else {
+          runRpc("uicmd", "open_interactive_window");
         }
         const page = document.querySelector(`[data-page='${pageName}']`);
         page.style.display = "block";
@@ -351,6 +353,8 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
               `[data-page='${previousPage}']`,
             );
             prevPageElem.style.display = "block";
+          } else {
+            runRpc("uicmd", "close_interactive_window");
           }
         }
       }
