@@ -65,12 +65,10 @@ export function listenRemote(
 ) {
   const handler = (msgEvent: MessageEvent) => {
     const data = JSON.parse(msgEvent.data);
-    console.log("Received remote event:", data.e, msgEvent.data);
     if (data.e === event) {
       callback(data.d);
     }
   };
-  console.log("Listening to remote event:", event);
   ws.addEventListener("message", handler);
   return handler;
 }

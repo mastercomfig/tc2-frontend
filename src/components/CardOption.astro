@@ -81,6 +81,14 @@ const { id, name, desc } = Astro.props;
     }
   }
 
+  .paper-card-wrapper:nth-child(4) {
+    animation-delay: 0.4s;
+
+    > .paper-card:hover {
+      transform: scale(1.08) rotateX(-10deg) rotateZ(-1deg);
+    }
+  }
+
   .paper-card h1 {
     font-size: 1.25rem;
     margin-top: 0.5rem;
@@ -104,7 +112,9 @@ const { id, name, desc } = Astro.props;
 
 <div class="paper-card-wrapper">
   <div id={id} class="paper-card animation-card w-64 h-full">
-    <img src={`/img/cards/${id}.png`} alt="" class="w-full h-auto" />
+    <div class="w-full flex justify-center items-center">
+      <img src={`/img/cards/${id}.png`} alt="" class="w-full h-auto" />
+    </div>
     <h1>{name}</h1>
     <p class="tf2-light">{desc}</p>
   </div>

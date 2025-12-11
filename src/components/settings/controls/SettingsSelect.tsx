@@ -1,5 +1,5 @@
 import { runRpc } from "@/util/ws";
-import { use, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Label,
   Listbox,

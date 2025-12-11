@@ -1,0 +1,373 @@
+---
+const classGroups = [
+  {
+    key: "offense",
+    label: "Offense",
+    classes: [
+      { name: "Scout", poster: "scout.png", id: "scout" },
+      { name: "Soldier", poster: "soldier.png", id: "soldier" },
+      { name: "Pyro", poster: "pyro.png", id: "pyro" },
+    ],
+  },
+  {
+    key: "defense",
+    label: "Defense",
+    classes: [
+      { name: "Demoman", poster: "demoman.png", id: "demoman" },
+      { name: "Heavy", poster: "heavyweapons.png", id: "heavyweapons" },
+      { name: "Engineer", poster: "engineer.png", id: "engineer" },
+    ],
+  },
+  {
+    key: "support",
+    label: "Support",
+    classes: [
+      { name: "Medic", poster: "medic.png", id: "medic" },
+      { name: "Sniper", poster: "sniper.png", id: "sniper" },
+      { name: "Spy", poster: "spy.png", id: "spy" },
+    ],
+  },
+];
+---
+
+<section class="classes-board">
+  <div class="classes-board-container">
+    {
+      classGroups.map((group) => (
+        <div class={`class-row class-row--${group.key}`}>
+          <div class="row-header" aria-label={`${group.label} classes`}>
+            <div class="row-label tf2-medium" data-tone={group.key}>
+              <span>{group.label}</span>
+            </div>
+            <div class="row-paper-crease" aria-hidden="true" />
+          </div>
+
+          <div class="row-cards" role="list">
+            {group.classes.map((cls) => (
+              <div
+                class="class-card"
+                data-class={cls.id}
+                data-tone={group.key}
+                role="listitem"
+              >
+                <div class="poster-shell">
+                  <img
+                    src={`/img/classes/posters/${cls.poster}`}
+                    alt={`${cls.name} class poster`}
+                    loading="lazy"
+                  />
+                  <div class="paper-outline" aria-hidden="true" />
+                </div>
+                <div class="class-name tf2-bold">
+                  <span>{cls.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  :global(:root) {
+    --paper-bg: #f2e9d8;
+    --ink: #1f1309;
+    --accent-offense: #8f531a;
+    --accent-defense: #a05d1e;
+    --accent-support: #9c7232;
+    --highlight: #ffd25f;
+  }
+
+  .classes-board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    padding: 2.5rem 10rem;
+    position: relative;
+    overflow: hidden;
+    width: 72vh;
+  }
+
+  .classes-board::before,
+  .classes-board::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        115deg,
+        rgba(0, 0, 0, 0.04),
+        rgba(0, 0, 0, 0.04) 6px,
+        transparent 6px,
+        transparent 12px
+      ),
+      repeating-linear-gradient(
+        -82deg,
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.35) 5px,
+        transparent 5px,
+        transparent 10px
+      );
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+  }
+
+  .classes-board::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), transparent 30%);
+    opacity: 0.55;
+  }
+
+  .class-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .row-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .row-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.35rem;
+    color: var(--ink);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: var(--paper-bg);
+    box-shadow:
+      -6px 10px 0 rgba(0, 0, 0, 0.14),
+      inset 0 0 0 2px var(--ink);
+    transform: rotate(-1.5deg);
+    position: relative;
+  }
+
+  .row-label::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(0, 0, 0, 0.35);
+    clip-path: inherit;
+    /*animation: drift 6s ease-in-out infinite;*/
+  }
+
+  .row-label[data-tone="offense"] {
+    background: linear-gradient(135deg, #f9d8b9, #f2b98a);
+    box-shadow:
+      -6px 10px 0 rgba(212, 113, 47, 0.25),
+      inset 0 0 0 2px var(--accent-offense);
+  }
+
+  .row-label[data-tone="defense"] {
+    background: linear-gradient(135deg, #f1e3c8, #d9b99b);
+    box-shadow:
+      -6px 10px 0 rgba(154, 106, 52, 0.25),
+      inset 0 0 0 2px var(--accent-defense);
+  }
+
+  .row-label[data-tone="support"] {
+    background: linear-gradient(135deg, #e8e1cb, #d0ba9e);
+    box-shadow:
+      -6px 10px 0 rgba(141, 119, 60, 0.25),
+      inset 0 0 0 2px var(--accent-support);
+  }
+
+  .row-paper-crease {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.3) 0,
+      rgba(0, 0, 0, 0.3) 10px,
+      transparent 10px,
+      transparent 18px
+    );
+    opacity: 0.4;
+  }
+
+  .row-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .class-card {
+    background: #fffaf0;
+    border-radius: 14px;
+    padding: 0.75rem;
+    box-shadow:
+      0 14px 25px rgba(0, 0, 0, 0.12),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    transform: rotate(calc(-1deg + 2deg * var(--tilt, 0)));
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .class-card::before,
+  .class-card::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+    clip-path: polygon(
+      4% 0,
+      98% 8%,
+      100% 40%,
+      92% 100%,
+      16% 94%,
+      0 62%,
+      6% 16%
+    );
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  .class-card::after {
+    inset: 14px;
+    border-style: dotted;
+    opacity: 0.4;
+    /*animation: drift 7s ease-in-out infinite;*/
+  }
+
+  .class-card:hover {
+    transform: translateY(-6px) scale(1.03) rotate(0deg);
+    box-shadow:
+      0 20px 30px rgba(0, 0, 0, 0.16),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    background: #fff4d5;
+  }
+
+  .poster-shell {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e8e0d3;
+    aspect-ratio: 4 / 5;
+    filter: saturate(0.48);
+    transition:
+      filter 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .class-card[data-tone="offense"] .poster-shell {
+    box-shadow: inset 0 0 0 2px rgba(212, 107, 47, 0.15);
+  }
+  .class-card[data-tone="defense"] .poster-shell {
+    box-shadow: inset 0 0 0 2px rgba(154, 110, 52, 0.15);
+  }
+  .class-card[data-tone="support"] .poster-shell {
+    box-shadow: inset 0 0 0 2px rgba(141, 133, 60, 0.15);
+  }
+
+  .poster-shell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.01);
+    transition:
+      transform 0.25s ease,
+      filter 0.25s ease;
+  }
+
+  .paper-outline {
+    position: absolute;
+    inset: 1px;
+    border: 3px solid #000;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .class-card:hover .poster-shell {
+    filter: saturate(1);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .class-card:hover .poster-shell img {
+    transform: scale(1.07);
+  }
+
+  .class-card:hover .paper-outline {
+    opacity: 1;
+  }
+
+  .class-name {
+    margin-top: 0.65rem;
+    text-align: center;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    transition:
+      transform 0.2s ease,
+      text-shadow 0.2s ease,
+      background 0.2s ease;
+    padding: 0.35rem 0.5rem;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .class-name > span {
+    min-width: 50%;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .class-card:hover .class-name {
+    transform: scale(1.06);
+    text-shadow: -2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .class-card:hover .class-name > span {
+    background: var(--highlight);
+    box-shadow: 0 0 1rem rgba(78, 64, 30, 0.6);
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-1.5deg) translateY(0);
+    }
+    35% {
+      transform: rotate(-2.5deg) translateY(-2px);
+    }
+    70% {
+      transform: rotate(-0.4deg) translateY(1px);
+    }
+  }
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(3px, -3px) rotate(-1.2deg);
+    }
+  }
+
+  @keyframes outline-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.25));
+    }
+    50% {
+      transform: scale(1.02) rotate(-0.4deg);
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+    }
+  }
+</style>

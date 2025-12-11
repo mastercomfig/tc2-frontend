@@ -1,8 +1,12 @@
 ---
 import CardOption from "@/components/CardOption.astro";
 import Cards from "@/components/Cards.astro";
+import ClassesList from "@/components/classes/ClassesList.astro";
+import ClassPage from "@/components/classes/ClassPage.astro";
 import { SettingsView } from "@/components/settings/SettingsView";
 import "@/styles/global.css";
+
+const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "engineer", "medic", "sniper", "spy"];
 ---
 
 <html lang="en">
@@ -125,16 +129,58 @@ import "@/styles/global.css";
       #modal-overlay.closing {
         animation: overlayFadeOut 0.3s ease-in forwards;
       }
+
+      .page {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #292526;
+        z-index: 10;
+      }
+
+      .page-footer {
+        height: auto;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem 10rem;
+      }
+
+      .page-footer-btn {
+        color: #b4b4b4;
+        cursor: pointer;
+        transition: color 0.1s ease-in-out;
+        background: #292526;
+        border: 1px solid #b4b4b4;
+        border-radius: 0.375rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .page-footer-btn:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 153, 51, 0.2) 0%,
+          rgba(255, 153, 51, 0.1) 100%
+        );
+        border: 1px solid rgb(255 153 51);
+        color: rgb(255 153 51);
+      }
     </style>
   </head>
   <body class="main-menu-bg">
     <div id="modal-overlay"></div>
     <div
       id="menu"
-      class="flex flex-col items-start justify-center h-screen pl-20"
+      class="flex flex-col items-start justify-center h-screen pl-60"
     >
       <img src="/img/logo-tc2.png" id="menu-logo" class="w-128" />
       <h2 class="text-6xl menu-option inline-block" data-menu="play">Play</h2>
+      <br />
+      <h2 class="text-4xl menu-option inline-block" data-menu="classes">
+        Classes
+      </h2>
       <br />
       <h2 class="text-4xl menu-option inline-block" data-menu="loadout">
         Loadout
@@ -164,11 +210,43 @@ import "@/styles/global.css";
         <CardOption id="host" name="Host" desc="Create your own game." />
         <!--<CardOption id="community" name="Community" desc="Look for a group to play with." />-->
         <!--<CardOption id="workshop" name="Workshop" desc="Play custom maps and modes." /> -->
-        <!--<CardOption id="training" name="Training" desc="Learn the ins and outs of TF2." /> -->
+        <CardOption id="training" name="Training" desc="Learn the ins and outs of TF2." />
       </Cards>
     </div>
     <div class="modal" data-modal="settings">
       <SettingsView client:only="react" />
+    </div>
+    
+    {
+      classes.map((cls) => (
+        <div class="page" data-page={`class-${cls}`}>
+          <div class="flex flex-col items-start justify-between h-full">
+            <div class="flex-1">
+              <ClassPage className={cls} />
+            </div>
+            <div class="page-footer">
+              <button
+                class="page-footer-btn page-back-btn text-4xl tf2-bold"
+              >
+                &larr; BACK
+              </button>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+    <div class="page" data-page="classes">
+      <div class="flex flex-col items-start justify-between h-full">
+        <div class="flex-1">
+          <ClassesList />
+        </div>
+        <div class="page-footer">
+          <button
+            class="page-footer-btn page-back-btn text-4xl tf2-bold"
+          >
+            &larr; BACK
+          </button>
+        </div>
     </div>
     <script>
       import { playSound } from "@/util/playSound";
@@ -178,6 +256,9 @@ import "@/styles/global.css";
         play: () => {
           // cards modal
           toggleModal("play");
+        },
+        classes: () => {
+          openPage("classes");
         },
         loadout: () => {
           runRpc("cmd", "open_charinfo");
@@ -242,6 +323,65 @@ import "@/styles/global.css";
         }
       }
 
+      let pageStack: string[] = [];
+
+      function openPage(pageName) {
+        const activePage =
+          pageStack.length > 0
+            ? pageStack[pageStack.length - 1]
+            : null;
+        if (activePage) {
+          const page = document.querySelector(`[data-page='${activePage}']`);
+          page.style.display = "none";
+        }
+        const page = document.querySelector(`[data-page='${pageName}']`);
+        page.style.display = "block";
+        pageStack.push(pageName);
+      }
+
+      function closeActivePage() {
+        if (pageStack.length > 0) {
+          const activePage = pageStack[pageStack.length - 1];
+          const page = document.querySelector(`[data-page='${activePage}']`);
+          page.style.display = "none";
+          pageStack.pop();
+          if (pageStack.length > 0) {
+            const previousPage = pageStack[pageStack.length - 1];
+            const prevPageElem = document.querySelector(
+              `[data-page='${previousPage}']`,
+            );
+            prevPageElem.style.display = "block";
+          }
+        }
+      }
+
+      document
+        .querySelectorAll(".page-back-btn")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            closeActivePage();
+          });
+        });
+
+      document.querySelectorAll(".class-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const className = card.dataset.class;
+          openPage(`class-${className}`);
+        });
+      });
+
+      document.querySelectorAll(".class-video-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          runRpc("openurl", link.dataset.video);
+        });
+      });
+
+      document.querySelectorAll(".class-loadout-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          runRpc("cmd", `open_charinfo_direct ${link.dataset.classIndex}`);
+        });
+      });
+
       document.getElementById("modal-overlay").addEventListener("click", () => {
         // close all modals
         const modals = document.querySelectorAll(".modal");
@@ -291,8 +431,12 @@ import "@/styles/global.css";
         toggleModal("play");
       });
 
+      document.getElementById("training").addEventListener("click", () => {
+        runRpc("mmcmd", "play_training");
+        toggleModal("play");
+      });
+
       listenRemote("ingame", (data) => {
-        console.log()
         setMenuState(data === "1" ? "connected" : "disconnected");
       });
       runRpc("getingame").then((data) => {
