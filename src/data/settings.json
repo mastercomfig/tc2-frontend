@@ -92,6 +92,33 @@
                             "label": "Show Pop-up Alerts While In-Game",
                             "tooltip": "If set, you'll receive in-game notification popups for various events, like trade requests. If unset, these notifications will only be visible when you return to the main menu.",
                             "cvar": "cl_notifications_show_ingame"
+                        },
+                        {
+                            "type": "select",
+                            "label": "Featured Class on Main Menu",
+                            "tooltip": "Choose which class is featured on the main menu.",
+                            "cvar": "tf_mainmenu_class_highlight",
+                            "options": [
+                                { "label": "Random", "value": "0" },
+                                { "label": "Scout", "value": "1" },
+                                { "label": "Soldier", "value": "2" },
+                                { "label": "Pyro", "value": "3" },
+                                { "label": "Demoman", "value": "4" },
+                                { "label": "Heavy", "value": "5" },
+                                { "label": "Engineer", "value": "6" },
+                                { "label": "Medic", "value": "7" },
+                                { "label": "Sniper", "value": "8" },
+                                { "label": "Spy", "value": "9" }
+                            ]
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Chat History Lines",
+                            "tooltip": "The number of lines to keep in the chat history. Setting this higher will allow you to scroll back further to see previous messages, but may cause performance issues on some computers.",
+                            "cvar": "hud_chat_history_lines",
+                            "min": 10,
+                            "max": 100,
+                            "step": 1
                         }
                     ]
                 },
