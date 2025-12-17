@@ -202,7 +202,7 @@
                             "type": "select",
                             "label": "Killsound Type",
                             "tooltip": "",
-                            "cvar": "tf_dingalingaling_lasthit_effect",
+                            "cvar": "tf_dingalingaling_last_effect",
                             "options": [
                                 { "label": "Beepo", "value": "6" },
                                 { "label": "Ding", "value": "0" },
