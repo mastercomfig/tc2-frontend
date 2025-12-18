@@ -824,11 +824,12 @@
                             "type": "select",
                             "label": "Model Quality",
                             "tooltip": "",
-                            "cvar": "r_rootlod",
+                            "cvar": "sg_models",
                             "options": [
-                                { "label": "Low", "value": "2" },
+                                { "label": "Low", "value": "0" },
                                 { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "0" }
+                                { "label": "High", "value": "2" },
+                                { "label": "Ultra", "value": "3" }
                             ]
                         },
                         {
