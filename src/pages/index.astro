@@ -6,7 +6,17 @@ import ClassPage from "@/components/classes/ClassPage.astro";
 import { SettingsView } from "@/components/settings/SettingsView";
 import "@/styles/global.css";
 
-const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "engineer", "medic", "sniper", "spy"];
+const classes = [
+  "scout",
+  "soldier",
+  "pyro",
+  "demoman",
+  "heavyweapons",
+  "engineer",
+  "medic",
+  "sniper",
+  "spy",
+];
 ---
 
 <html lang="en">
@@ -58,6 +68,17 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
       .main-menu-bg {
         background: rgb(0 0 0 / 10%);
       }
+      /** radial-gradient(circle at top left, rgba(50, 30, 60, 0.7) 0%, rgba(30, 20, 40, 0.4) 45%, transparent 80%) */
+      /** radial-gradient(circle at top left, rgba(212, 160, 29, 0.25) 0%, rgba(148, 88, 11, 0.15) 40%, transparent 70%) */
+
+      .main-menu-bg-light {
+        background: radial-gradient(
+          circle at top left,
+          rgba(30, 44, 76, 0.8) 0%,
+          rgba(15, 20, 30, 0.5) 45%,
+          transparent 80%
+        );
+      }
       .scroll {
         scrollbar-color: #b4b4b4 transparent;
       }
@@ -78,6 +99,7 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
         transform: scale(1);
         transform-origin: left;
         display: inline-block;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       }
       .menu-hidden {
         display: none;
@@ -169,7 +191,7 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
       }
     </style>
   </head>
-  <body class="main-menu-bg">
+  <body class="main-menu-bg-light">
     <div id="modal-overlay"></div>
     <div
       id="menu"
@@ -210,13 +232,17 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
         <CardOption id="host" name="Host" desc="Create your own game." />
         <!--<CardOption id="community" name="Community" desc="Look for a group to play with." />-->
         <!--<CardOption id="workshop" name="Workshop" desc="Play custom maps and modes." /> -->
-        <CardOption id="training" name="Training" desc="Learn the ins and outs of TF2." />
+        <CardOption
+          id="training"
+          name="Training"
+          desc="Learn the ins and outs of TF2."
+        />
       </Cards>
     </div>
     <div class="modal" data-modal="settings">
       <SettingsView client:only="react" />
     </div>
-    
+
     {
       classes.map((cls) => (
         <div class="page" data-page={`class-${cls}`}>
@@ -225,9 +251,7 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
               <ClassPage className={cls} />
             </div>
             <div class="page-footer">
-              <button
-                class="page-footer-btn page-back-btn text-4xl tf2-bold"
-              >
+              <button class="page-footer-btn page-back-btn text-4xl tf2-bold">
                 &larr; BACK
               </button>
             </div>
@@ -241,211 +265,210 @@ const classes = ["scout", "soldier", "pyro", "demoman", "heavyweapons", "enginee
           <ClassesList />
         </div>
         <div class="page-footer">
-          <button
-            class="page-footer-btn page-back-btn text-4xl tf2-bold"
-          >
+          <button class="page-footer-btn page-back-btn text-4xl tf2-bold">
             &larr; BACK
           </button>
         </div>
-    </div>
-    <script>
-      import { playSound } from "@/util/playSound";
-      import { listenRemote, runRpc } from "@/util/ws";
+      </div>
+      <script>
+        import { playSound } from "@/util/playSound";
+        import { listenRemote, runRpc } from "@/util/ws";
 
-      const handlers = {
-        play: () => {
-          // cards modal
-          toggleModal("play");
-        },
-        classes: () => {
-          openPage("classes");
-        },
-        loadout: () => {
-          runRpc("cmd", "open_charinfo");
-        },
-        settings: () => {
-          toggleModal("settings");
-        },
-        quit: () => {
-          runRpc("mmcmd", "quit");
-        },
-        disconnect: () => {
-          runRpc("mmcmd", "disconnect");
-        },
-      };
+        const handlers = {
+          play: () => {
+            // cards modal
+            toggleModal("play");
+          },
+          classes: () => {
+            openPage("classes");
+          },
+          loadout: () => {
+            runRpc("cmd", "open_charinfo");
+          },
+          settings: () => {
+            toggleModal("settings");
+          },
+          quit: () => {
+            runRpc("mmcmd", "quit");
+          },
+          disconnect: () => {
+            runRpc("mmcmd", "disconnect");
+          },
+        };
 
-      // add click event listeners to menu options
-      const menuOptions = document.querySelectorAll(".menu-option");
-      menuOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-          const menu = option.dataset.menu;
-          if (handlers[menu]) {
-            handlers[menu]();
-          }
-        });
-
-        option.addEventListener("mouseenter", () => {
-          playSound("ui/buttonrollover.wav");
-        });
-
-        option.addEventListener("click", () => {
-          playSound("ui/buttonclickrelease.wav");
-        });
-
-        option.addEventListener("pointerdown", () => {
-          playSound("ui/buttonclick.wav");
-        });
-      });
-
-      function toggleModal(modalName) {
-        const modal = document.querySelector(`[data-modal='${modalName}']`);
-        const overlay = document.getElementById("modal-overlay");
-
-        if (modal.style.display === "none" || modal.style.display === "") {
-          modal.style.display = "block";
-          overlay.style.display = "block";
-          // Trigger animation
-          requestAnimationFrame(() => {
-            modal.classList.remove("closing");
-            overlay.classList.remove("closing");
+        // add click event listeners to menu options
+        const menuOptions = document.querySelectorAll(".menu-option");
+        menuOptions.forEach((option) => {
+          option.addEventListener("click", () => {
+            const menu = option.dataset.menu;
+            if (handlers[menu]) {
+              handlers[menu]();
+            }
           });
-        } else {
-          modal.classList.add("closing");
-          overlay.classList.add("closing");
-          setTimeout(() => {
-            modal.style.display = "none";
-            overlay.style.display = "none";
-          }, 300);
-          if (modalName === "settings") {
-            runRpc("cmd", "mat_savechanges");
-            runRpc("cmd", "host_writeconfig");
-          }
-        }
-      }
 
-      let pageStack: string[] = [];
+          option.addEventListener("mouseenter", () => {
+            playSound("ui/buttonrollover.wav");
+          });
 
-      function openPage(pageName) {
-        const activePage =
-          pageStack.length > 0
-            ? pageStack[pageStack.length - 1]
-            : null;
-        if (activePage) {
-          const page = document.querySelector(`[data-page='${activePage}']`);
-          page.style.display = "none";
-        } else {
-          runRpc("uicmd", "open_interactive_window");
-        }
-        const page = document.querySelector(`[data-page='${pageName}']`);
-        page.style.display = "block";
-        pageStack.push(pageName);
-      }
+          option.addEventListener("click", () => {
+            playSound("ui/buttonclickrelease.wav");
+          });
 
-      function closeActivePage() {
-        if (pageStack.length > 0) {
-          const activePage = pageStack[pageStack.length - 1];
-          const page = document.querySelector(`[data-page='${activePage}']`);
-          page.style.display = "none";
-          pageStack.pop();
-          if (pageStack.length > 0) {
-            const previousPage = pageStack[pageStack.length - 1];
-            const prevPageElem = document.querySelector(
-              `[data-page='${previousPage}']`,
-            );
-            prevPageElem.style.display = "block";
+          option.addEventListener("pointerdown", () => {
+            playSound("ui/buttonclick.wav");
+          });
+        });
+
+        function toggleModal(modalName) {
+          const modal = document.querySelector(`[data-modal='${modalName}']`);
+          const overlay = document.getElementById("modal-overlay");
+
+          if (modal.style.display === "none" || modal.style.display === "") {
+            modal.style.display = "block";
+            overlay.style.display = "block";
+            // Trigger animation
+            requestAnimationFrame(() => {
+              modal.classList.remove("closing");
+              overlay.classList.remove("closing");
+            });
           } else {
-            runRpc("uicmd", "close_interactive_window");
+            modal.classList.add("closing");
+            overlay.classList.add("closing");
+            setTimeout(() => {
+              modal.style.display = "none";
+              overlay.style.display = "none";
+            }, 300);
+            if (modalName === "settings") {
+              runRpc("cmd", "mat_savechanges");
+              runRpc("cmd", "host_writeconfig");
+            }
           }
         }
-      }
 
-      document
-        .querySelectorAll(".page-back-btn")
-        .forEach((btn) => {
+        let pageStack: string[] = [];
+
+        function openPage(pageName) {
+          const activePage =
+            pageStack.length > 0 ? pageStack[pageStack.length - 1] : null;
+          if (activePage) {
+            const page = document.querySelector(`[data-page='${activePage}']`);
+            page.style.display = "none";
+          } else {
+            runRpc("uicmd", "open_interactive_window");
+          }
+          const page = document.querySelector(`[data-page='${pageName}']`);
+          page.style.display = "block";
+          pageStack.push(pageName);
+        }
+
+        function closeActivePage() {
+          if (pageStack.length > 0) {
+            const activePage = pageStack[pageStack.length - 1];
+            const page = document.querySelector(`[data-page='${activePage}']`);
+            page.style.display = "none";
+            pageStack.pop();
+            if (pageStack.length > 0) {
+              const previousPage = pageStack[pageStack.length - 1];
+              const prevPageElem = document.querySelector(
+                `[data-page='${previousPage}']`,
+              );
+              prevPageElem.style.display = "block";
+            } else {
+              runRpc("uicmd", "close_interactive_window");
+            }
+          }
+        }
+
+        document.querySelectorAll(".page-back-btn").forEach((btn) => {
           btn.addEventListener("click", () => {
             closeActivePage();
           });
         });
 
-      document.querySelectorAll(".class-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          const className = card.dataset.class;
-          openPage(`class-${className}`);
-        });
-      });
-
-      document.querySelectorAll(".class-video-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          runRpc("openurl", link.dataset.video);
-        });
-      });
-
-      document.querySelectorAll(".class-loadout-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          runRpc("cmd", `open_charinfo_direct ${link.dataset.classIndex}`);
-        });
-      });
-
-      document.getElementById("modal-overlay").addEventListener("click", () => {
-        // close all modals
-        const modals = document.querySelectorAll(".modal");
-        const overlay = document.getElementById("modal-overlay");
-
-        modals.forEach((modal) => {
-          modal.classList.add("closing");
-        });
-        overlay.classList.add("closing");
-
-        setTimeout(() => {
-          modals.forEach((modal) => {
-            modal.style.display = "none";
+        document.querySelectorAll(".class-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const className = card.dataset.class;
+            openPage(`class-${className}`);
           });
-          overlay.style.display = "none";
-        }, 300);
-      });
+        });
 
-      function setMenuState(state: string) {
-        const quitOption = document.querySelector("[data-menu='quit']");
-        const disconnectOption = document.querySelector(
-          "[data-menu='disconnect']",
-        );
-        if (state === "connected") {
-          quitOption.classList.add("menu-hidden");
-          disconnectOption.classList.remove("menu-hidden");
-          document.body.classList.add("main-menu-bg");
-        } else {
-          quitOption.classList.remove("menu-hidden");
-          disconnectOption.classList.add("menu-hidden");
-          document.body.classList.remove("main-menu-bg");
+        document.querySelectorAll(".class-video-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            runRpc("openurl", link.dataset.video);
+          });
+        });
+
+        document.querySelectorAll(".class-loadout-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            runRpc("cmd", `open_charinfo_direct ${link.dataset.classIndex}`);
+          });
+        });
+
+        document
+          .getElementById("modal-overlay")
+          .addEventListener("click", () => {
+            // close all modals
+            const modals = document.querySelectorAll(".modal");
+            const overlay = document.getElementById("modal-overlay");
+
+            modals.forEach((modal) => {
+              modal.classList.add("closing");
+            });
+            overlay.classList.add("closing");
+
+            setTimeout(() => {
+              modals.forEach((modal) => {
+                modal.style.display = "none";
+              });
+              overlay.style.display = "none";
+            }, 300);
+          });
+
+        function setMenuState(state: string) {
+          const quitOption = document.querySelector("[data-menu='quit']");
+          const disconnectOption = document.querySelector(
+            "[data-menu='disconnect']",
+          );
+          if (state === "connected") {
+            quitOption.classList.add("menu-hidden");
+            disconnectOption.classList.remove("menu-hidden");
+            document.body.classList.add("main-menu-bg");
+            document.body.classList.remove("main-menu-bg-light");
+          } else {
+            quitOption.classList.remove("menu-hidden");
+            disconnectOption.classList.add("menu-hidden");
+            document.body.classList.remove("main-menu-bg");
+            document.body.classList.add("main-menu-bg-light");
+          }
         }
-      }
 
-      document.getElementById("quickplay").addEventListener("click", () => {
-        runRpc("mmcmd", "find_game");
-        toggleModal("play");
-      });
+        document.getElementById("quickplay").addEventListener("click", () => {
+          runRpc("mmcmd", "find_game");
+          toggleModal("play");
+        });
 
-      document.getElementById("explore").addEventListener("click", () => {
-        runRpc("mmcmd", "play_community");
-        toggleModal("play");
-      });
+        document.getElementById("explore").addEventListener("click", () => {
+          runRpc("mmcmd", "play_community");
+          toggleModal("play");
+        });
 
-      document.getElementById("host").addEventListener("click", () => {
-        runRpc("mmcmd", "create_server");
-        toggleModal("play");
-      });
+        document.getElementById("host").addEventListener("click", () => {
+          runRpc("mmcmd", "create_server");
+          toggleModal("play");
+        });
 
-      document.getElementById("training").addEventListener("click", () => {
-        runRpc("mmcmd", "play_training");
-        toggleModal("play");
-      });
+        document.getElementById("training").addEventListener("click", () => {
+          runRpc("mmcmd", "play_training");
+          toggleModal("play");
+        });
 
-      listenRemote("ingame", (data) => {
-        setMenuState(data === "1" ? "connected" : "disconnected");
-      });
-      runRpc("getingame").then((data) => {
-        setMenuState(data === "1" ? "connected" : "disconnected");
-      });
-    </script>
+        listenRemote("ingame", (data) => {
+          setMenuState(data === "1" ? "connected" : "disconnected");
+        });
+        runRpc("getingame").then((data) => {
+          setMenuState(data === "1" ? "connected" : "disconnected");
+        });
+      </script>
+    </div>
   </body>
 </html>
