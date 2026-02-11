@@ -319,11 +319,14 @@ const classes = [
           });
         });
 
+        let activeModal = null;
+
         function toggleModal(modalName) {
           const modal = document.querySelector(`[data-modal='${modalName}']`);
           const overlay = document.getElementById("modal-overlay");
 
           if (modal.style.display === "none" || modal.style.display === "") {
+            activeModal = modalName;
             modal.style.display = "block";
             overlay.style.display = "block";
             // Trigger animation
@@ -332,6 +335,7 @@ const classes = [
               overlay.classList.remove("closing");
             });
           } else {
+            activeModal = null;
             modal.classList.add("closing");
             overlay.classList.add("closing");
             setTimeout(() => {
@@ -464,6 +468,14 @@ const classes = [
 
         listenRemote("ingame", (data) => {
           setMenuState(data === "1" ? "connected" : "disconnected");
+        });
+        listenRemote("closedmenu", () => {
+          while (pageStack.length > 0) {
+            closeActivePage();
+          }
+          if (activeModal) {
+            toggleModal(activeModal);
+          }
         });
         runRpc("getingame").then((data) => {
           setMenuState(data === "1" ? "connected" : "disconnected");
