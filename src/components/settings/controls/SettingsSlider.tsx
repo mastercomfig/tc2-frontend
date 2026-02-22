@@ -1,5 +1,5 @@
 import { runRpc } from "@/util/ws";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function SettingsSlider({ setting }) {
   const [value, setValue] = useState(0);

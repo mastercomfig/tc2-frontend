@@ -152,6 +152,35 @@ const classes = [
         animation: overlayFadeOut 0.3s ease-in forwards;
       }
 
+      .modal-close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.4rem;
+        background: #3b3637;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        color: #b4b4b4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 20;
+        transition: all 0.15s ease-in-out;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      .modal-close-btn:hover {
+        border: 1px solid rgb(255 153 51);
+        color: rgb(255 153 51);
+        transform: translate(50%, -50%) scale(1.1);
+      }
+
       .page {
         display: none;
         position: fixed;
@@ -218,6 +247,7 @@ const classes = [
       </h2>
     </div>
     <div class="card-modal modal" data-modal="play">
+      <button class="modal-close-btn" aria-label="Close modal">&#10005;</button>
       <Cards id="play-cards">
         <CardOption
           id="quickplay"
@@ -240,6 +270,7 @@ const classes = [
       </Cards>
     </div>
     <div class="modal" data-modal="settings">
+      <button class="modal-close-btn" aria-label="Close modal">&#10005;</button>
       <SettingsView client:only="react" />
     </div>
 
@@ -319,9 +350,9 @@ const classes = [
           });
         });
 
-        let activeModal = null;
+        let activeModal: string | null = null;
 
-        function toggleModal(modalName) {
+        function toggleModal(modalName, instant = false) {
           const modal = document.querySelector(`[data-modal='${modalName}']`);
           const overlay = document.getElementById("modal-overlay");
 
@@ -330,22 +361,38 @@ const classes = [
             modal.style.display = "block";
             overlay.style.display = "block";
             // Trigger animation
-            requestAnimationFrame(() => {
+            if (!instant) {
+              requestAnimationFrame(() => {
+                modal.classList.remove("closing");
+                overlay.classList.remove("closing");
+              });
+            } else {
               modal.classList.remove("closing");
               overlay.classList.remove("closing");
-            });
+            }
           } else {
             activeModal = null;
             modal.classList.add("closing");
             overlay.classList.add("closing");
-            setTimeout(() => {
+            if (!instant) {
+              setTimeout(() => {
+                modal.style.display = "none";
+                overlay.style.display = "none";
+              }, 300);
+            } else {
               modal.style.display = "none";
               overlay.style.display = "none";
-            }, 300);
+            }
             if (modalName === "settings") {
               runRpc("cmd", "mat_savechanges");
               runRpc("cmd", "host_writeconfig");
             }
+          }
+        }
+
+        function closeActiveModal(instant = false) {
+          if (activeModal) {
+            toggleModal(activeModal, instant);
           }
         }
 
@@ -410,23 +457,11 @@ const classes = [
 
         document
           .getElementById("modal-overlay")
-          .addEventListener("click", () => {
-            // close all modals
-            const modals = document.querySelectorAll(".modal");
-            const overlay = document.getElementById("modal-overlay");
+          .addEventListener("click", () => closeActiveModal());
 
-            modals.forEach((modal) => {
-              modal.classList.add("closing");
-            });
-            overlay.classList.add("closing");
-
-            setTimeout(() => {
-              modals.forEach((modal) => {
-                modal.style.display = "none";
-              });
-              overlay.style.display = "none";
-            }, 300);
-          });
+        document.querySelectorAll(".modal-close-btn").forEach((btn) => {
+          btn.addEventListener("click", () => closeActiveModal());
+        });
 
         function setMenuState(state: string) {
           const quitOption = document.querySelector("[data-menu='quit']");
@@ -473,11 +508,9 @@ const classes = [
           while (pageStack.length > 0) {
             closeActivePage();
           }
-          if (activeModal) {
-            toggleModal(activeModal);
-          }
+          closeActiveModal(true);
         });
-        runRpc("getingame").then((data) => {
+        runRpc("getingame", null, true).then((data) => {
           setMenuState(data === "1" ? "connected" : "disconnected");
         });
       </script>
