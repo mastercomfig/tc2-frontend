@@ -8,7 +8,7 @@ export function SettingsItem({ setting, setTooltip }) {
   return (
     <div
       key={setting.id}
-      className="mb-4"
+      className={`mb-2 py-2 ps-4 me-5 ${setting.type === "header" ? "" : "hover:bg-white/10"}`}
       onMouseOver={() => {
         setTooltip(setting.tooltip ?? "");
       }}
