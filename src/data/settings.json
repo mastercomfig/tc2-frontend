@@ -24,11 +24,26 @@
                             "tooltip": "Will constrain certain elements of the HUD to fit to the center of the screen based upon the aspect ratio chosen.",
                             "cvar": "cl_hud_aspect",
                             "options": [
-                                { "label": "Default Centered (4:3)", "value": "1" },
-                                { "label": "Fully Centered (1:1)", "value": "2" },
-                                { "label": "16:9", "value": "3" },
-                                { "label": "16:10", "value": "4" },
-                                { "label": "Fit Display", "value": "0" }
+                                {
+                                    "label": "Default Centered (4:3)",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Fully Centered (1:1)",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "16:9",
+                                    "value": "3"
+                                },
+                                {
+                                    "label": "16:10",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "Fit Display",
+                                    "value": "0"
+                                }
                             ]
                         },
                         {
@@ -58,9 +73,18 @@
                             "tooltip": "",
                             "cvar": "tf_scoreboard_mouse_mode",
                             "options": [
-                                { "label": "Disabled", "value": "0" },
-                                { "label": "Enabled On Click", "value": "2" },
-                                { "label": "Always Enabled", "value": "1" }
+                                {
+                                    "label": "Disabled",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Enabled On Click",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Always Enabled",
+                                    "value": "1"
+                                }
                             ]
                         },
                         {
@@ -99,16 +123,46 @@
                             "tooltip": "Choose which class is featured on the main menu.",
                             "cvar": "tf_mainmenu_class_highlight",
                             "options": [
-                                { "label": "Random", "value": "0" },
-                                { "label": "Scout", "value": "1" },
-                                { "label": "Soldier", "value": "2" },
-                                { "label": "Pyro", "value": "3" },
-                                { "label": "Demoman", "value": "4" },
-                                { "label": "Heavy", "value": "5" },
-                                { "label": "Engineer", "value": "6" },
-                                { "label": "Medic", "value": "7" },
-                                { "label": "Sniper", "value": "8" },
-                                { "label": "Spy", "value": "9" }
+                                {
+                                    "label": "Random",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Scout",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Soldier",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Pyro",
+                                    "value": "3"
+                                },
+                                {
+                                    "label": "Demoman",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "Heavy",
+                                    "value": "5"
+                                },
+                                {
+                                    "label": "Engineer",
+                                    "value": "6"
+                                },
+                                {
+                                    "label": "Medic",
+                                    "value": "7"
+                                },
+                                {
+                                    "label": "Sniper",
+                                    "value": "8"
+                                },
+                                {
+                                    "label": "Spy",
+                                    "value": "9"
+                                }
                             ]
                         },
                         {
@@ -150,15 +204,42 @@
                             "tooltip": "",
                             "cvar": "tf_dingalingaling_effect",
                             "options": [
-                                { "label": "Beepo", "value": "6" },
-                                { "label": "Ding", "value": "0" },
-                                { "label": "Electro", "value": "1" },
-                                { "label": "Notes", "value": "2" },
-                                { "label": "Percussion", "value": "3" },
-                                { "label": "Retro", "value": "4" },
-                                { "label": "Space", "value": "5" },
-                                { "label": "Vortex", "value": "7" },
-                                { "label": "Squasher", "value": "8" }
+                                {
+                                    "label": "Beepo",
+                                    "value": "6"
+                                },
+                                {
+                                    "label": "Ding",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Electro",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Notes",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Percussion",
+                                    "value": "3"
+                                },
+                                {
+                                    "label": "Retro",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "Space",
+                                    "value": "5"
+                                },
+                                {
+                                    "label": "Vortex",
+                                    "value": "7"
+                                },
+                                {
+                                    "label": "Squasher",
+                                    "value": "8"
+                                }
                             ]
                         },
                         {
@@ -204,15 +285,42 @@
                             "tooltip": "",
                             "cvar": "tf_dingalingaling_last_effect",
                             "options": [
-                                { "label": "Beepo", "value": "6" },
-                                { "label": "Ding", "value": "0" },
-                                { "label": "Electro", "value": "1" },
-                                { "label": "Notes", "value": "2" },
-                                { "label": "Percussion", "value": "3" },
-                                { "label": "Retro", "value": "4" },
-                                { "label": "Space", "value": "5" },
-                                { "label": "Vortex", "value": "7" },
-                                { "label": "Squasher", "value": "8" }
+                                {
+                                    "label": "Beepo",
+                                    "value": "6"
+                                },
+                                {
+                                    "label": "Ding",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Electro",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Notes",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Percussion",
+                                    "value": "3"
+                                },
+                                {
+                                    "label": "Retro",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "Space",
+                                    "value": "5"
+                                },
+                                {
+                                    "label": "Vortex",
+                                    "value": "7"
+                                },
+                                {
+                                    "label": "Squasher",
+                                    "value": "8"
+                                }
                             ]
                         },
                         {
@@ -256,9 +364,21 @@
                             "tooltip": "Controls how damage numbers are combined when multiple hits are made in quick succession.",
                             "cvar": "hud_combattext_batching",
                             "options": [
-                                { "label": "Individual", "value": "0", "tooltip": "Each damage number is shown separately." },
-                                { "label": "Combined", "value": "2", "tooltip": "Damage numbers are combined into a single number." },
-                                { "label": "Individual+Combined", "value": "1", "tooltip": "Each damage number is shown separately and added into a combined number." }
+                                {
+                                    "label": "Individual",
+                                    "value": "0",
+                                    "tooltip": "Each damage number is shown separately."
+                                },
+                                {
+                                    "label": "Combined",
+                                    "value": "2",
+                                    "tooltip": "Damage numbers are combined into a single number."
+                                },
+                                {
+                                    "label": "Individual+Combined",
+                                    "value": "1",
+                                    "tooltip": "Each damage number is shown separately and added into a combined number."
+                                }
                             ]
                         },
                         {
@@ -321,15 +441,42 @@
                             "cvar": "cl_crosshair_file",
                             "valueType": "string",
                             "options": [
-                                { "label": "Per Weapon", "value": "" },
-                                { "label": "Crosshair Dot", "value": "crosshair1" },
-                                { "label": "Half Crosshair Dot", "value": "crosshair2" },
-                                { "label": "Circle", "value": "crosshair3" },
-                                { "label": "X", "value": "crosshair4" },
-                                { "label": "Dot", "value": "crosshair5" },
-                                { "label": "Crosshair No Dot", "value": "crosshair6" },
-                                { "label": "Plus", "value": "crosshair7" },
-                                { "label": "Brackets", "value": "default" }
+                                {
+                                    "label": "Per Weapon",
+                                    "value": ""
+                                },
+                                {
+                                    "label": "Crosshair Dot",
+                                    "value": "crosshair1"
+                                },
+                                {
+                                    "label": "Half Crosshair Dot",
+                                    "value": "crosshair2"
+                                },
+                                {
+                                    "label": "Circle",
+                                    "value": "crosshair3"
+                                },
+                                {
+                                    "label": "X",
+                                    "value": "crosshair4"
+                                },
+                                {
+                                    "label": "Dot",
+                                    "value": "crosshair5"
+                                },
+                                {
+                                    "label": "Crosshair No Dot",
+                                    "value": "crosshair6"
+                                },
+                                {
+                                    "label": "Plus",
+                                    "value": "crosshair7"
+                                },
+                                {
+                                    "label": "Brackets",
+                                    "value": "default"
+                                }
                             ]
                         },
                         {
@@ -493,9 +640,21 @@
                             "tooltip": "Control how the sniper rifle zoom functions.",
                             "cvar": "cl_autorezoom",
                             "options": [
-                                { "label": "Toggle Zoom", "value": "0", "tooltip": "Toggle zooming upon a press of the zoom key." },
-                                { "label": "Auto Re-Zoom", "value": "1", "tooltip": "Automatically re-zoom after firing." },
-                                { "label": "Hold to Zoom", "value": "2", "tooltip": "Hold the zoom key to maintain zooming. Will maintain a zoom between shots if held." }
+                                {
+                                    "label": "Toggle Zoom",
+                                    "value": "0",
+                                    "tooltip": "Toggle zooming upon a press of the zoom key."
+                                },
+                                {
+                                    "label": "Auto Re-Zoom",
+                                    "value": "1",
+                                    "tooltip": "Automatically re-zoom after firing."
+                                },
+                                {
+                                    "label": "Hold to Zoom",
+                                    "value": "2",
+                                    "tooltip": "Hold the zoom key to maintain zooming. Will maintain a zoom between shots if held."
+                                }
                             ]
                         },
                         {
@@ -545,10 +704,22 @@
                             "tooltip": "",
                             "cvar": "tf_spectator_target_location",
                             "options": [
-                                { "label": "Default", "value": "0" },
-                                { "label": "Bottom Left Corner", "value": "1" },
-                                { "label": "Bottom Center", "value": "2" },
-                                { "label": "Bottom Right Corner", "value": "3" }
+                                {
+                                    "label": "Default",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Bottom Left Corner",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Bottom Center",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Bottom Right Corner",
+                                    "value": "3"
+                                }
                             ]
                         },
                         {
@@ -568,11 +739,31 @@
                             "tooltip": "",
                             "cvar": "ds_enable",
                             "options": [
-                                { "label": "Manual", "value": "0", "tooltip": "Recordings can be started/stopped using the ds_record/ds_stop commands." },
-                                { "label": "Auto-Record Matchmaking Matches", "value": "1", "tooltip": "Gameplay will be recorded when on an official matchmaking server." },
-                                { "label": "Auto-Record All Matches", "value": "2", "tooltip": "All gameplay will be recorded on any server." },
-                                { "label": "Auto-Record Tournament Matches", "value": "3", "tooltip": "Record when the server is using mp_tournament." },
-                                { "label": "Auto-Record Competitive Matches", "value": "4", "tooltip": "Gameplay will be recorded on official or community competitive servers." }
+                                {
+                                    "label": "Manual",
+                                    "value": "0",
+                                    "tooltip": "Recordings can be started/stopped using the ds_record/ds_stop commands."
+                                },
+                                {
+                                    "label": "Auto-Record Matchmaking Matches",
+                                    "value": "1",
+                                    "tooltip": "Gameplay will be recorded when on an official matchmaking server."
+                                },
+                                {
+                                    "label": "Auto-Record All Matches",
+                                    "value": "2",
+                                    "tooltip": "All gameplay will be recorded on any server."
+                                },
+                                {
+                                    "label": "Auto-Record Tournament Matches",
+                                    "value": "3",
+                                    "tooltip": "Record when the server is using mp_tournament."
+                                },
+                                {
+                                    "label": "Auto-Record Competitive Matches",
+                                    "value": "4",
+                                    "tooltip": "Gameplay will be recorded on official or community competitive servers."
+                                }
                             ]
                         },
                         {
@@ -593,9 +784,18 @@
                             "tooltip": "",
                             "cvar": "ds_notify",
                             "options": [
-                                { "label": "Console Only", "value": "0" },
-                                { "label": "Console and Chat Window", "value": "1" },
-                                { "label": "Console and HUD", "value": "2" }
+                                {
+                                    "label": "Console Only",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Console and Chat Window",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Console and HUD",
+                                    "value": "2"
+                                }
                             ]
                         },
                         {
@@ -639,9 +839,21 @@
                             "tooltip": "Select how the game should account for your network quality. Lower settings may increase latency but improve overall stability.",
                             "cvar": "sg_net",
                             "options": [
-                                { "label": "Poor", "value": "0", "tooltip": "I have a poor quality network." },
-                                { "label": "Okay", "value": "1", "tooltip": "I have an okay quality network." },
-                                { "label": "High-end", "value": "2", "tooltip": "I have a high quality network." }
+                                {
+                                    "label": "Poor",
+                                    "value": "0",
+                                    "tooltip": "I have a poor quality network."
+                                },
+                                {
+                                    "label": "Okay",
+                                    "value": "1",
+                                    "tooltip": "I have an okay quality network."
+                                },
+                                {
+                                    "label": "High-end",
+                                    "value": "2",
+                                    "tooltip": "I have a high quality network."
+                                }
                             ]
                         },
                         {
@@ -650,15 +862,42 @@
                             "cvar": "rate",
                             "tooltip": "Select the bandwidth setting that best matches your internet download speed.",
                             "options": [
-                                { "label": "Up to 128 Kbps", "value": "16000" },
-                                { "label": "Up to 762 Kbps", "value": "80000" },
-                                { "label": "Up to 1.0 Mbps", "value": "131072" },
-                                { "label": "Up to 1.5 Mbps", "value": "196608" },
-                                { "label": "Up to 2.0 Mbps", "value": "262144" },
-                                { "label": "Up to 2.5 Mbps", "value": "327680" },
-                                { "label": "Up to 3.0 Mbps", "value": "393216" },
-                                { "label": "Up to 4.0 Mbps", "value": "524288" },
-                                { "label": "Up to 6.0 Mbps", "value": "786432" }
+                                {
+                                    "label": "Up to 128 Kbps",
+                                    "value": "16000"
+                                },
+                                {
+                                    "label": "Up to 762 Kbps",
+                                    "value": "80000"
+                                },
+                                {
+                                    "label": "Up to 1.0 Mbps",
+                                    "value": "131072"
+                                },
+                                {
+                                    "label": "Up to 1.5 Mbps",
+                                    "value": "196608"
+                                },
+                                {
+                                    "label": "Up to 2.0 Mbps",
+                                    "value": "262144"
+                                },
+                                {
+                                    "label": "Up to 2.5 Mbps",
+                                    "value": "327680"
+                                },
+                                {
+                                    "label": "Up to 3.0 Mbps",
+                                    "value": "393216"
+                                },
+                                {
+                                    "label": "Up to 4.0 Mbps",
+                                    "value": "524288"
+                                },
+                                {
+                                    "label": "Up to 6.0 Mbps",
+                                    "value": "786432"
+                                }
                             ]
                         },
                         {
@@ -668,10 +907,22 @@
                             "cvar": "cl_downloadfilter",
                             "valueType": "string",
                             "options": [
-                                { "label": "Allow all custom files from server", "value": "all" },
-                                { "label": "Do not download custom sounds", "value": "nosounds" },
-                                { "label": "Only allow map files", "value": "mapsonly" },
-                                { "label": "Do not download any custom files", "value": "none" }
+                                {
+                                    "label": "Allow all custom files from server",
+                                    "value": "all"
+                                },
+                                {
+                                    "label": "Do not download custom sounds",
+                                    "value": "nosounds"
+                                },
+                                {
+                                    "label": "Only allow map files",
+                                    "value": "mapsonly"
+                                },
+                                {
+                                    "label": "Do not download any custom files",
+                                    "value": "none"
+                                }
                             ]
                         },
                         {
@@ -680,9 +931,18 @@
                             "tooltip": "If set, network performance information such as ping and packet loss will be displayed on the HUD.",
                             "cvar": "net_graph",
                             "options": [
-                                { "label": "Off", "value": "0" },
-                                { "label": "Basic", "value": "1" },
-                                { "label": "Detailed", "value": "4" }
+                                {
+                                    "label": "Off",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Basic",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Detailed",
+                                    "value": "4"
+                                }
                             ]
                         }
                     ]
@@ -701,9 +961,18 @@
                             "tooltip": "",
                             "cvar": "videomode_mode",
                             "options": [
-                                { "label": "Exclusive Fullscreen", "value": "0" },
-                                { "label": "Windowed", "value": "1" },
-                                { "label": "Borderless Window", "value": "2" }
+                                {
+                                    "label": "Exclusive Fullscreen",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Windowed",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Borderless Window",
+                                    "value": "2"
+                                }
                             ]
                         },
                         {
@@ -712,7 +981,10 @@
                             "tooltip": "",
                             "cvar": "videomode_size",
                             "options": [
-                                { "label": "Use Native Resolution", "value": "0" }
+                                {
+                                    "label": "Use Native Resolution",
+                                    "value": "0"
+                                }
                             ]
                         },
                         {
@@ -735,6 +1007,14 @@
                             "min": 60,
                             "max": 1000,
                             "step": 1
+                        },
+                        {
+                            "type": "slider",
+                            "label": "Main menu maximum frames per second allowed",
+                            "tooltip": "",
+                            "cvar": "ui_fps_max",
+                            "min": 60,
+                            "max": 240
                         }
                     ]
                 },
@@ -789,11 +1069,26 @@
                             "tooltip": "",
                             "cvar": "sg_shadows",
                             "options": [
-                                { "label": "Off", "value": "0" },
-                                { "label": "Low", "value": "1" },
-                                { "label": "Medium", "value": "2" },
-                                { "label": "High", "value": "3" },
-                                { "label": "Ultra", "value": "4" }
+                                {
+                                    "label": "Off",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Low",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "3"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "4"
+                                }
                             ]
                         },
                         {
@@ -802,10 +1097,22 @@
                             "tooltip": "",
                             "cvar": "sg_shaders",
                             "options": [
-                                { "label": "Low", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" },
-                                { "label": "Ultra", "value": "3" }
+                                {
+                                    "label": "Low",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "3"
+                                }
                             ]
                         },
                         {
@@ -814,10 +1121,22 @@
                             "tooltip": "",
                             "cvar": "mat_picmip",
                             "options": [
-                                { "label": "Low", "value": "2" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "0" },
-                                { "label": "Ultra", "value": "-1" }
+                                {
+                                    "label": "Low",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "-1"
+                                }
                             ]
                         },
                         {
@@ -826,10 +1145,22 @@
                             "tooltip": "",
                             "cvar": "sg_models",
                             "options": [
-                                { "label": "Low", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" },
-                                { "label": "Ultra", "value": "3" }
+                                {
+                                    "label": "Low",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "3"
+                                }
                             ]
                         },
                         {
@@ -838,10 +1169,22 @@
                             "tooltip": "",
                             "cvar": "sg_effects",
                             "options": [
-                                { "label": "Low", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" },
-                                { "label": "Ultra", "value": "3" }
+                                {
+                                    "label": "Low",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "3"
+                                }
                             ]
                         },
                         {
@@ -850,10 +1193,22 @@
                             "tooltip": "",
                             "cvar": "sg_reflections",
                             "options": [
-                                { "label": "Off", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" },
-                                { "label": "Ultra", "value": "3" }
+                                {
+                                    "label": "Off",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Ultra",
+                                    "value": "3"
+                                }
                             ]
                         },
                         {
@@ -862,9 +1217,18 @@
                             "tooltip": "",
                             "cvar": "sg_postprocess",
                             "options": [
-                                { "label": "Low", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" }
+                                {
+                                    "label": "Low",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                }
                             ]
                         },
                         {
@@ -873,10 +1237,22 @@
                             "tooltip": "",
                             "cvar": "mat_antialias",
                             "options": [
-                                { "label": "None", "value": "1" },
-                                { "label": "2x MSAA", "value": "2" },
-                                { "label": "4x MSAA", "value": "4" },
-                                { "label": "8x MSAA", "value": "8" }
+                                {
+                                    "label": "None",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "2x MSAA",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "4x MSAA",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "8x MSAA",
+                                    "value": "8"
+                                }
                             ]
                         },
                         {
@@ -885,11 +1261,26 @@
                             "tooltip": "",
                             "cvar": "mat_forceaniso",
                             "options": [
-                                { "label": "Trilinear", "value": "1" },
-                                { "label": "Anisotropic 2x", "value": "2" },
-                                { "label": "Anisotropic 4x", "value": "4" },
-                                { "label": "Anisotropic 8x", "value": "8" },
-                                { "label": "Anisotropic 16x", "value": "16" }
+                                {
+                                    "label": "Trilinear",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "Anisotropic 2x",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "Anisotropic 4x",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "Anisotropic 8x",
+                                    "value": "8"
+                                },
+                                {
+                                    "label": "Anisotropic 16x",
+                                    "value": "16"
+                                }
                             ]
                         }
                     ]
@@ -951,11 +1342,26 @@
                             "tooltip": "",
                             "cvar": "snd_surround_speakers",
                             "options": [
-                                { "label": "Headphones", "value": "0" },
-                                { "label": "2 Speakers", "value": "2" },
-                                { "label": "4 Speakers", "value": "4" },
-                                { "label": "5.1 Speakers", "value": "5" },
-                                { "label": "7.1 Speakers", "value": "6" }
+                                {
+                                    "label": "Headphones",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "2 Speakers",
+                                    "value": "2"
+                                },
+                                {
+                                    "label": "4 Speakers",
+                                    "value": "4"
+                                },
+                                {
+                                    "label": "5.1 Speakers",
+                                    "value": "5"
+                                },
+                                {
+                                    "label": "7.1 Speakers",
+                                    "value": "6"
+                                }
                             ]
                         }
                     ]
@@ -969,9 +1375,18 @@
                             "tooltip": "",
                             "cvar": "sg_sound",
                             "options": [
-                                { "label": "Low", "value": "0" },
-                                { "label": "Medium", "value": "1" },
-                                { "label": "High", "value": "2" }
+                                {
+                                    "label": "Low",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "Medium",
+                                    "value": "1"
+                                },
+                                {
+                                    "label": "High",
+                                    "value": "2"
+                                }
                             ]
                         },
                         {
